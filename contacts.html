@@ -100,7 +100,7 @@
           </div>
 
           <div class="card-body">
-            <form>
+            <form class="js-validate-form" novalidate>
               <div class="row g-3">
                 <div class="col-12 col-md-6">
                   <label for="feedback-name" class="form-label">Имя *</label>
@@ -148,6 +148,17 @@
     </div>
   </main>
 
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="formToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Спасибо! Заявка отправлена, менеджер свяжется с вами.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+      </div>
+    </div>
+  </div>
+
   <footer class="bg-dark text-white py-4 mt-5">
     <div class="container">
       <div class="row align-items-center g-3">
@@ -173,5 +184,6 @@
   </footer>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
