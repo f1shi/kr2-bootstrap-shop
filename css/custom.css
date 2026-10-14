@@ -6,6 +6,11 @@ body {
   min-height: 240px;
 }
 
+.promo-slide {
+  min-height: 260px;
+  padding-inline: 4rem !important;
+}
+
 .placeholder-image {
   min-height: 320px;
 }

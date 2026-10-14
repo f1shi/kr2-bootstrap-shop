@@ -101,10 +101,42 @@
         </div>
 
         <div class="col-12 col-lg-6">
-          <div class="placeholder-box p-5 bg-light border rounded text-center d-flex align-items-center justify-content-center">
-            <p class="mb-0 text-muted">
-              Смартфоны, ноутбуки, наушники и аксессуары по выгодным ценам.
-            </p>
+          <div id="promoCarousel" class="carousel slide rounded overflow-hidden shadow-sm" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
+              <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+              <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+            </div>
+
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="promo-slide bg-primary text-white d-flex flex-column justify-content-center p-5">
+                  <h3 class="h4">Скидки на ноутбуки</h3>
+                  <p class="mb-0">Ноутбук ProBook 15 со скидкой до 10%.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="promo-slide bg-success text-white d-flex flex-column justify-content-center p-5">
+                  <h3 class="h4">Новинки недели</h3>
+                  <p class="mb-0">Наушники AirSound и смарт-часы FitBand уже в каталоге.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="promo-slide bg-dark text-white d-flex flex-column justify-content-center p-5">
+                  <h3 class="h4">Бесплатная доставка</h3>
+                  <p class="mb-0">При заказе от 5 000 руб. доставка по городу бесплатно.</p>
+                </div>
+              </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#promoCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Предыдущий слайд</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#promoCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Следующий слайд</span>
+            </button>
           </div>
         </div>
       </div>
