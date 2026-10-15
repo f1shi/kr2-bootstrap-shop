@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Смартфон Galaxy X: описание, характеристики, условия доставки и отзывы.">
   <title>Товар — Bootstrap Shop</title>
 
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
@@ -41,6 +39,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="order.html">Заявка</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacts.html">Контакты</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -107,33 +108,77 @@
     </div>
 
     <section class="mt-5">
-      <h2 class="h4 mb-3">Характеристики</h2>
+      <ul class="nav nav-tabs" id="productTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs-pane" type="button" role="tab" aria-controls="specs-pane" aria-selected="true">
+            Характеристики
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="delivery-tab" data-bs-toggle="tab" data-bs-target="#delivery-pane" type="button" role="tab" aria-controls="delivery-pane" aria-selected="false">
+            Доставка
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-pane" type="button" role="tab" aria-controls="reviews-pane" aria-selected="false">
+            Отзывы <span class="badge bg-secondary">2</span>
+          </button>
+        </li>
+      </ul>
 
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered align-middle">
-          <tbody>
-            <tr>
-              <th scope="row">Категория</th>
-              <td>Смартфоны</td>
-            </tr>
-            <tr>
-              <th scope="row">Цена</th>
-              <td>54 990 руб.</td>
-            </tr>
-            <tr>
-              <th scope="row">Наличие</th>
-              <td>В наличии</td>
-            </tr>
-            <tr>
-              <th scope="row">Дисплей</th>
-              <td>6.5" AMOLED, 2400×1080</td>
-            </tr>
-            <tr>
-              <th scope="row">Память</th>
-              <td>8 ГБ / 128 ГБ</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="tab-content border border-top-0 rounded-bottom bg-white p-3" id="productTabsContent">
+        <div class="tab-pane fade show active" id="specs-pane" role="tabpanel" aria-labelledby="specs-tab" tabindex="0">
+          <h2 class="h4 mb-3">Характеристики</h2>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered align-middle">
+              <tbody>
+                <tr>
+                  <th scope="row">Категория</th>
+                  <td>Смартфоны</td>
+                </tr>
+                <tr>
+                  <th scope="row">Цена</th>
+                  <td>54 990 руб.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Наличие</th>
+                  <td>В наличии</td>
+                </tr>
+                <tr>
+                  <th scope="row">Дисплей</th>
+                  <td>6.5" AMOLED, 2400×1080</td>
+                </tr>
+                <tr>
+                  <th scope="row">Память</th>
+                  <td>8 ГБ / 128 ГБ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="delivery-pane" role="tabpanel" aria-labelledby="delivery-tab" tabindex="0">
+          <h2 class="h4 mb-3">Доставка</h2>
+          <ul class="mb-0">
+            <li>курьером по городу за 1–2 дня;</li>
+            <li>самовывоз из пункта выдачи;</li>
+            <li>бесплатно при заказе от 5 000 руб.</li>
+          </ul>
+        </div>
+
+        <div class="tab-pane fade" id="reviews-pane" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
+          <h2 class="h4 mb-3">Отзывы</h2>
+          <div class="list-group">
+            <div class="list-group-item">
+              <p class="fw-semibold mb-1">Анна К.</p>
+              <p class="mb-0 text-muted">Отличный смартфон! Быстрый, батарея держит два дня.</p>
+            </div>
+            <div class="list-group-item">
+              <p class="fw-semibold mb-1">Игорь М.</p>
+              <p class="mb-0 text-muted">Камера супер, экран яркий. Рекомендую.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -229,16 +274,17 @@
           <a class="text-white text-decoration-none me-3" href="catalog.html">
             Каталог
           </a>
-          <a class="text-white text-decoration-none" href="order.html">
+          <a class="text-white text-decoration-none me-3" href="order.html">
             Заявка
+          </a>
+          <a class="text-white text-decoration-none" href="contacts.html">
+            Контакты
           </a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
-  </script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

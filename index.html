@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bootstrap Shop — учебный интернет-магазин электроники на Bootstrap: смартфоны, ноутбуки, наушники.">
   <title>Главная — Bootstrap Shop</title>
 
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
@@ -63,6 +61,9 @@
           <li class="nav-item">
             <a class="nav-link" href="order.html">Заявка</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacts.html">Контакты</a>
+          </li>
           <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
@@ -101,10 +102,42 @@
         </div>
 
         <div class="col-12 col-lg-6">
-          <div class="placeholder-box p-5 bg-light border rounded text-center d-flex align-items-center justify-content-center">
-            <p class="mb-0 text-muted">
-              Смартфоны, ноутбуки, наушники и аксессуары по выгодным ценам.
-            </p>
+          <div id="promoCarousel" class="carousel slide rounded overflow-hidden shadow-sm" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
+              <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="1" aria-label="Слайд 2"></button>
+              <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="2" aria-label="Слайд 3"></button>
+            </div>
+
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="promo-slide bg-primary text-white d-flex flex-column justify-content-center p-5">
+                  <h3 class="h4">Скидки на ноутбуки</h3>
+                  <p class="mb-0">Ноутбук ProBook 15 со скидкой до 10%.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="promo-slide bg-success text-white d-flex flex-column justify-content-center p-5">
+                  <h3 class="h4">Новинки недели</h3>
+                  <p class="mb-0">Наушники AirSound и смарт-часы FitBand уже в каталоге.</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="promo-slide bg-dark text-white d-flex flex-column justify-content-center p-5">
+                  <h3 class="h4">Бесплатная доставка</h3>
+                  <p class="mb-0">При заказе от 5 000 руб. доставка по городу бесплатно.</p>
+                </div>
+              </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#promoCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Предыдущий слайд</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#promoCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Следующий слайд</span>
+            </button>
           </div>
         </div>
       </div>
@@ -210,16 +243,17 @@
           <a class="text-white text-decoration-none me-3" href="catalog.html">
             Каталог
           </a>
-          <a class="text-white text-decoration-none" href="order.html">
+          <a class="text-white text-decoration-none me-3" href="order.html">
             Заявка
+          </a>
+          <a class="text-white text-decoration-none" href="contacts.html">
+            Контакты
           </a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
-  </script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
