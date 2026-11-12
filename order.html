@@ -3,16 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Форма заявки на покупку товара в Bootstrap Shop.">
-  <title>Заявка — Bootstrap Shop</title>
+  <meta name="description" content="Заявка на пристройство питомца из приюта «Хвостики».">
+  <title>Заявка — Приют «Хвостики»</title>
+
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) document.documentElement.setAttribute('data-bs-theme', savedTheme);
+    } catch (e) {}
+  </script>
 
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
+  <header class="bg-success text-white py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <p class="h3 mb-1">🐾 Приют «Хвостики»</p>
+          <p class="mb-0 opacity-75">
+            Помогаем кошкам, собакам и другим животным найти дом
+          </p>
+        </div>
+
+        <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
+          <a class="btn btn-light btn-sm text-success fw-semibold" href="tel:+79000000000">
+            +7 (900) 000-00-00
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Bootstrap Shop</a>
+      <a class="navbar-brand" href="index.html">Хвостики</a>
 
       <button
         class="navbar-toggler"
@@ -27,18 +53,21 @@
       </button>
 
       <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="catalog.html">Каталог</a>
+            <a class="nav-link" href="catalog.html">Питомцы</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="product.html">Товар</a>
+            <a class="nav-link" href="product.html">Питомец</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="order.html">Заявка</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="help.html">Помочь</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contacts.html">Контакты</a>
@@ -53,11 +82,21 @@
             >
               Дополнительно
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="catalog.html">Все товары</a></li>
-              <li><a class="dropdown-item" href="order.html">Оформить заявку</a></li>
-              <li><a class="dropdown-item" href="index.html#popular">Популярное</a></li>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="catalog.html">Все питомцы</a></li>
+              <li><a class="dropdown-item" href="index.html#urgent">Срочно ищут дом</a></li>
+              <li><a class="dropdown-item" href="help.html#volunteer">Стать волонтёром</a></li>
             </ul>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <button
+              id="themeToggle"
+              class="btn btn-outline-light btn-sm"
+              type="button"
+              aria-label="Переключить тему"
+            >
+              🌙 Тёмная
+            </button>
           </li>
         </ul>
       </div>
@@ -68,67 +107,100 @@
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8">
         <div class="card shadow-sm">
-          <div class="card-header bg-primary text-white">
-            <h1 class="h4 mb-0">Форма заявки</h1>
+          <div class="card-header bg-success text-white">
+            <h1 class="h4 mb-0">Заявка на питомца</h1>
           </div>
 
           <div class="card-body">
             <div class="alert alert-info" role="alert">
-              Заполните форму. Поля со звёздочкой являются обязательными.
+              Заполните анкету — куратор позвонит и договорится о знакомстве.
+              Поля со звёздочкой обязательны.
             </div>
+
+            <div id="selectedPetAlert" class="alert alert-success d-none" role="status"></div>
 
             <form class="js-validate-form" novalidate>
               <div class="row g-3">
                 <div class="col-12 col-md-6">
                   <label for="order-name" class="form-label">Имя *</label>
-                  <input id="order-name" name="name" type="text" class="form-control" required>
+                  <input id="order-name" name="name" type="text" class="form-control" autocomplete="name" required>
                   <div class="invalid-feedback">Введите имя.</div>
                 </div>
 
                 <div class="col-12 col-md-6">
                   <label for="order-email" class="form-label">E-mail *</label>
-                  <input id="order-email" name="email" type="email" class="form-control" required>
+                  <input id="order-email" name="email" type="email" class="form-control" autocomplete="email" required>
                   <div class="invalid-feedback">Введите корректный e-mail.</div>
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label for="order-phone" class="form-label">Телефон</label>
-                  <div class="input-group">
+                  <label for="order-phone" class="form-label">Телефон *</label>
+                  <div class="input-group has-validation">
                     <span class="input-group-text">+7</span>
-                    <input id="order-phone" name="phone" type="tel" class="form-control" placeholder="900 000-00-00">
+                    <input id="order-phone" name="phone" type="tel" class="form-control" placeholder="900 000-00-00" pattern="\d{3}\s?\d{3}-?\d{2}-?\d{2}" required>
+                    <div class="invalid-feedback">Введите 10 цифр номера.</div>
                   </div>
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label for="order-product" class="form-label">Товар</label>
-                  <select id="order-product" name="product" class="form-select">
-                    <option value="" selected>Выберите товар</option>
-                    <option value="airsound">Наушники AirSound</option>
-                    <option value="galaxy-x">Смартфон Galaxy X</option>
-                    <option value="probook-15">Ноутбук ProBook 15</option>
-                    <option value="fitband">Смарт-часы FitBand</option>
-                    <option value="ultraview-27">Монитор UltraView 27"</option>
-                    <option value="mechpro">Клавиатура MechPro</option>
+                  <label for="order-pet" class="form-label">Питомец *</label>
+                  <select id="order-pet" name="pet" class="form-select" required>
+                    <option value="" selected>Выберите питомца</option>
+                    <option value="barsik">Барсик (кошка, 2 года)</option>
+                    <option value="luna">Луна (кошка, 6 месяцев)</option>
+                    <option value="rex">Рекс (собака, 4 года)</option>
+                    <option value="ponchik">Пончик (собака, 5 месяцев)</option>
+                    <option value="maya">Майя (собака, 7 лет)</option>
+                    <option value="tosha">Тоша (другое, 1 год)</option>
+                    <option value="kesha">Кеша (другое, 3 года)</option>
+                    <option value="ryzhik">Рыжик (кошка, 9 лет)</option>
                   </select>
+                  <div class="invalid-feedback">Выберите питомца.</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <fieldset>
+                    <legend class="form-label fs-6">Где вы живёте? *</legend>
+                    <div class="form-check">
+                      <input id="home-flat" class="form-check-input" type="radio" name="home" value="flat" required>
+                      <label class="form-check-label" for="home-flat">Квартира</label>
+                    </div>
+                    <div class="form-check">
+                      <input id="home-house" class="form-check-input" type="radio" name="home" value="house" required>
+                      <label class="form-check-label" for="home-house">Частный дом</label>
+                    </div>
+                  </fieldset>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <p class="form-label mb-2">Дополнительно</p>
+                  <div class="form-check form-switch">
+                    <input id="order-other-pets" name="otherPets" class="form-check-input" type="checkbox" role="switch">
+                    <label class="form-check-label" for="order-other-pets">Дома есть другие животные</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input id="order-kids" name="kids" class="form-check-input" type="checkbox" role="switch">
+                    <label class="form-check-label" for="order-kids">В семье есть дети</label>
+                  </div>
                 </div>
 
                 <div class="col-12">
-                  <label for="order-comment" class="form-label">Комментарий</label>
-                  <textarea id="order-comment" name="comment" class="form-control" rows="4"></textarea>
+                  <label for="order-comment" class="form-label">Расскажите о себе</label>
+                  <textarea id="order-comment" name="comment" class="form-control" rows="4" placeholder="Был ли у вас опыт содержания животных?"></textarea>
                 </div>
 
                 <div class="col-12">
                   <div class="form-check">
                     <input id="order-agree" name="agree" class="form-check-input" type="checkbox" required>
                     <label class="form-check-label" for="order-agree">
-                      Я согласен на обработку данных *
+                      Я согласен на обработку данных и с условиями пристройства *
                     </label>
-                    <div class="invalid-feedback">Необходимо согласие.</div>
+                    <div class="invalid-feedback">Нужно ваше согласие.</div>
                   </div>
                 </div>
 
-                <div class="col-12 d-flex gap-2">
-                  <button class="btn btn-primary" type="submit">
+                <div class="col-12 d-flex flex-wrap gap-2">
+                  <button class="btn btn-success" type="submit">
                     Отправить заявку
                   </button>
                   <button class="btn btn-outline-secondary" type="reset">
@@ -143,40 +215,35 @@
     </div>
   </main>
 
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <p class="fw-semibold mb-1">🐾 Приют «Хвостики»</p>
+          <p class="mb-1 opacity-75">г. Москва, ул. Лесная, д. 12</p>
+          <p class="mb-0 opacity-75">&copy; 2026 Учебный проект КР №2</p>
+        </div>
+
+        <div class="col-12 col-md-6 text-md-end">
+          <a class="text-white text-decoration-none me-3" href="catalog.html">Питомцы</a>
+          <a class="text-white text-decoration-none me-3" href="order.html">Заявка</a>
+          <a class="text-white text-decoration-none me-3" href="help.html">Помочь</a>
+          <a class="text-white text-decoration-none" href="contacts.html">Контакты</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="formToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
       <div class="d-flex">
         <div class="toast-body">
-          Спасибо! Заявка отправлена, менеджер свяжется с вами.
+          Спасибо! Заявка отправлена, мы свяжемся с вами в течение дня.
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
       </div>
     </div>
   </div>
-
-  <footer class="bg-dark text-white py-4 mt-5">
-    <div class="container">
-      <div class="row align-items-center g-3">
-        <div class="col-12 col-md-6">
-          <p class="mb-0">
-            &copy; 2026 Bootstrap Shop. Учебный проект.
-          </p>
-        </div>
-
-        <div class="col-12 col-md-6 text-md-end">
-          <a class="text-white text-decoration-none me-3" href="catalog.html">
-            Каталог
-          </a>
-          <a class="text-white text-decoration-none me-3" href="order.html">
-            Заявка
-          </a>
-          <a class="text-white text-decoration-none" href="contacts.html">
-            Контакты
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
