@@ -25,18 +25,18 @@ forms.forEach((form) => {
   });
 });
 
-// 2. Фильтр и сортировка питомцев в каталоге
-const petList = document.getElementById('petList');
+// 2. Фильтр по группе птиц и сортировка по возрасту в каталоге
+const birdList = document.getElementById('birdList');
 
-if (petList) {
-  const filterButtons = document.querySelectorAll('input[name="petFilter"]');
-  const sortSelect = document.getElementById('petSort');
-  const countElement = document.getElementById('petCount');
-  const emptyMessage = document.getElementById('petEmpty');
-  const items = Array.from(petList.querySelectorAll('.pet-item'));
+if (birdList) {
+  const filterButtons = document.querySelectorAll('input[name="birdFilter"]');
+  const sortSelect = document.getElementById('birdSort');
+  const countElement = document.getElementById('birdCount');
+  const emptyMessage = document.getElementById('birdEmpty');
+  const items = Array.from(birdList.querySelectorAll('.bird-item'));
 
   function updateCatalog() {
-    const type = document.querySelector('input[name="petFilter"]:checked').value;
+    const type = document.querySelector('input[name="birdFilter"]:checked').value;
     const sort = sortSelect.value;
 
     const sorted = [...items];
@@ -50,7 +50,7 @@ if (petList) {
     sorted.forEach((item) => {
       const show = type === 'all' || item.dataset.type === type;
       item.classList.toggle('d-none', !show);
-      petList.appendChild(item);
+      birdList.appendChild(item);
       if (show) visible++;
     });
 
@@ -62,24 +62,24 @@ if (petList) {
   sortSelect.addEventListener('change', updateCatalog);
 }
 
-// 3. Подстановка выбранного питомца в форму заявки (order.html?pet=barsik)
-const petSelect = document.getElementById('order-pet');
+// 3. Подстановка выбранной птицы в форму заявки (order.html?bird=filya)
+const birdSelect = document.getElementById('order-bird');
 
-if (petSelect) {
-  const petId = new URLSearchParams(window.location.search).get('pet');
-  const option = petId ? petSelect.querySelector(`option[value="${CSS.escape(petId)}"]`) : null;
+if (birdSelect) {
+  const birdId = new URLSearchParams(window.location.search).get('bird');
+  const option = birdId ? birdSelect.querySelector(`option[value="${CSS.escape(birdId)}"]`) : null;
 
   if (option) {
-    petSelect.value = petId;
-    const alertElement = document.getElementById('selectedPetAlert');
-    alertElement.textContent = `Вы выбрали питомца: ${option.textContent}. Осталось заполнить анкету.`;
+    birdSelect.value = birdId;
+    const alertElement = document.getElementById('selectedBirdAlert');
+    alertElement.textContent = `Вы выбрали: ${option.textContent}. Осталось заполнить анкету.`;
     alertElement.classList.remove('d-none');
   }
 }
 
 // 4. Переключение светлой и тёмной темы с анимацией:
-//    в тёмную тему бигль бежит слева направо и закрывает занавес,
-//    в светлую — корги бежит справа налево и открывает занавес.
+//    в тёмную тему птица летит слева направо и закрывает занавес («наступает ночь»),
+//    в светлую — летит справа налево и открывает его («наступает утро»).
 const themeToggle = document.getElementById('themeToggle');
 let themeAnimating = false;
 
@@ -98,23 +98,23 @@ function saveTheme(theme) {
   }
 }
 
-function runDogCurtain(toDark, onCovered) {
+function runBirdCurtain(toDark, onCovered) {
   const curtain = document.createElement('div');
   curtain.className = 'theme-curtain';
 
-  const dog = document.createElement('img');
-  dog.className = 'theme-dog';
-  dog.alt = '';
-  dog.src = toDark ? 'images/dog-beagle.png' : 'images/dog-corgi.png';
+  // Внешний блок двигается по экрану, внутренний машет крыльями
+  const bird = document.createElement('div');
+  bird.className = toDark ? 'theme-bird' : 'theme-bird theme-bird--left';
+  bird.innerHTML = '<div class="theme-bird__sprite"></div>';
 
-  document.body.append(curtain, dog);
+  document.body.append(curtain, bird);
 
-  const duration = 1200;
-  const dogWidth = 168;
+  const duration = 1300;
+  const birdWidth = 168;
   const screenWidth = window.innerWidth;
-  // Собака пробегает от -dogWidth до screenWidth (или обратно),
-  // а край занавеса всегда «привязан» к её хвосту
-  const path = screenWidth + dogWidth;
+  // Птица пролетает от -birdWidth до screenWidth (или обратно),
+  // а край занавеса всегда привязан к её хвосту
+  const path = screenWidth + birdWidth;
   let startTime = null;
 
   if (!toDark) {
@@ -127,25 +127,28 @@ function runDogCurtain(toDark, onCovered) {
     if (startTime === null) startTime = time;
     const t = Math.min((time - startTime) / duration, 1);
     const eased = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    // Лёгкая «волна» по вертикали — птица то набирает, то теряет высоту
+    const wave = Math.sin(t * Math.PI * 3) * 18;
 
+    let birdLeft;
     if (toDark) {
-      // Бигль смотрит вправо: хвост слева, занавес тянется за ним
-      const dogLeft = -dogWidth + eased * path;
-      dog.style.left = `${dogLeft}px`;
-      curtain.style.width = `${Math.max(dogLeft, 0)}px`;
+      // Летит вправо: хвост слева, занавес тянется за ним
+      birdLeft = -birdWidth + eased * path;
+      curtain.style.width = `${Math.max(birdLeft, 0)}px`;
     } else {
-      // Корги смотрит влево: хвост справа, занавес уезжает вслед за ним
-      const dogLeft = screenWidth - eased * path;
-      dog.style.left = `${dogLeft}px`;
-      curtain.style.width = `${Math.max(dogLeft + dogWidth, 0)}px`;
+      // Летит влево: хвост справа, занавес уезжает вслед за ним
+      birdLeft = screenWidth - eased * path;
+      curtain.style.width = `${Math.max(birdLeft + birdWidth, 0)}px`;
     }
+    bird.style.left = `${birdLeft}px`;
+    bird.style.marginTop = `${wave}px`;
 
     if (t < 1) {
       requestAnimationFrame(frame);
       return;
     }
 
-    dog.remove();
+    bird.remove();
     if (toDark) {
       onCovered();
       curtain.classList.add('is-hiding');
@@ -175,7 +178,7 @@ if (themeToggle) {
     }
 
     themeAnimating = true;
-    runDogCurtain(next === 'dark', () => {
+    runBirdCurtain(next === 'dark', () => {
       applyTheme(next);
       saveTheme(next);
     });
