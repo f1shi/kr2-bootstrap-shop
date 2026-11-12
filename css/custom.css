@@ -2,20 +2,30 @@ body {
   min-height: 100vh;
 }
 
-.placeholder-box {
-  min-height: 240px;
+/* Заглушка фото питомца: эмодзи на цветном фоне */
+.pet-photo {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+  line-height: 1;
 }
 
+.pet-photo-lg {
+  height: auto;
+  min-height: 320px;
+  font-size: 9rem;
+}
+
+/* Слайды карусели историй */
 .promo-slide {
-  min-height: 260px;
+  min-height: 280px;
   padding-inline: 4rem !important;
 }
 
-.placeholder-image {
-  min-height: 320px;
-}
-
-.card-img-top {
-  height: 180px;
-  object-fit: cover;
+/* Цифры в блоке «Приют в цифрах» */
+.stat-number {
+  font-size: 2.75rem;
+  font-weight: 700;
 }

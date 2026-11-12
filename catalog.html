@@ -3,16 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог Bootstrap Shop: смартфоны, ноутбуки, наушники, смарт-часы и аксессуары.">
-  <title>Каталог — Bootstrap Shop</title>
+  <meta name="description" content="Каталог питомцев приюта «Хвостики»: кошки, собаки, кролики и попугаи, которые ищут дом.">
+  <title>Питомцы — Приют «Хвостики»</title>
+
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) document.documentElement.setAttribute('data-bs-theme', savedTheme);
+    } catch (e) {}
+  </script>
 
   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/custom.css">
 </head>
-<body class="bg-light">
+<body>
+  <header class="bg-success text-white py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <p class="h3 mb-1">🐾 Приют «Хвостики»</p>
+          <p class="mb-0 opacity-75">
+            Помогаем кошкам, собакам и другим животным найти дом
+          </p>
+        </div>
+
+        <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
+          <a class="btn btn-light btn-sm text-success fw-semibold" href="tel:+79000000000">
+            +7 (900) 000-00-00
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Bootstrap Shop</a>
+      <a class="navbar-brand" href="index.html">Хвостики</a>
 
       <button
         class="navbar-toggler"
@@ -27,18 +53,21 @@
       </button>
 
       <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="catalog.html">Каталог</a>
+            <a class="nav-link active" aria-current="page" href="catalog.html">Питомцы</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="product.html">Товар</a>
+            <a class="nav-link" href="product.html">Питомец</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="order.html">Заявка</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="help.html">Помочь</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contacts.html">Контакты</a>
@@ -53,11 +82,21 @@
             >
               Дополнительно
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="catalog.html">Все товары</a></li>
-              <li><a class="dropdown-item" href="order.html">Оформить заявку</a></li>
-              <li><a class="dropdown-item" href="index.html#popular">Популярное</a></li>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="catalog.html">Все питомцы</a></li>
+              <li><a class="dropdown-item" href="index.html#urgent">Срочно ищут дом</a></li>
+              <li><a class="dropdown-item" href="help.html#volunteer">Стать волонтёром</a></li>
             </ul>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <button
+              id="themeToggle"
+              class="btn btn-outline-light btn-sm"
+              type="button"
+              aria-label="Переключить тему"
+            >
+              🌙 Тёмная
+            </button>
           </li>
         </ul>
       </div>
@@ -66,193 +105,212 @@
 
   <main class="container my-5">
     <div class="alert alert-info" role="alert">
-      Выберите товар из каталога. Карточки товаров оформлены с помощью компонента Bootstrap card.
+      Нажмите «Хочу забрать» на карточке — питомец сразу подставится в форму заявки.
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="h2 mb-0">Каталог товаров</h1>
-      <a class="btn btn-outline-primary" href="order.html">
-        Оставить заявку
-      </a>
+    <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center mb-4">
+      <h1 class="h2 mb-0">Наши питомцы</h1>
+      <button
+        class="btn btn-outline-success"
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#visitModal"
+      >
+        Записаться на знакомство
+      </button>
     </div>
 
-    <div class="row g-4">
-        <div class="col-12 col-md-6 col-lg-4">
+    <div class="row g-3 align-items-center mb-4">
+      <div class="col-12 col-lg-6">
+        <div class="btn-group flex-wrap" role="group" aria-label="Фильтр по виду животного">
+          <input type="radio" class="btn-check" name="petFilter" id="filter-all" value="all" checked>
+          <label class="btn btn-outline-success" for="filter-all">Все</label>
+
+          <input type="radio" class="btn-check" name="petFilter" id="filter-cat" value="cat">
+          <label class="btn btn-outline-success" for="filter-cat">Кошки</label>
+
+          <input type="radio" class="btn-check" name="petFilter" id="filter-dog" value="dog">
+          <label class="btn btn-outline-success" for="filter-dog">Собаки</label>
+
+          <input type="radio" class="btn-check" name="petFilter" id="filter-other" value="other">
+          <label class="btn btn-outline-success" for="filter-other">Другие</label>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <label for="petSort" class="visually-hidden">Сортировка</label>
+        <select id="petSort" class="form-select">
+          <option value="default" selected>Без сортировки</option>
+          <option value="young">Сначала молодые</option>
+          <option value="old">Сначала взрослые</option>
+        </select>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 text-md-end">
+        <span class="text-body-secondary">Найдено: <span id="petCount" class="fw-bold">8</span></span>
+      </div>
+    </div>
+
+    <div class="row g-4" id="petList">
+        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="cat" data-age="24">
           <div class="card h-100 shadow-sm">
+            <div class="pet-photo bg-warning-subtle card-img-top" role="img" aria-label="Фото: Барсик">🐈</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-3">
-                <h2 class="card-title h5">Наушники AirSound</h2>
-                <span class="badge bg-success">Новинка</span>
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h5 mb-0">Барсик</h3>
+                <span class="text-body-secondary small">Кошка</span>
               </div>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-danger">Срочно ищет дом</span> <span class="badge text-bg-success">Привит</span></div>
+              <p class="small text-body-secondary mb-2">2 года · мальчик</p>
+              <p class="card-text">Ласковый домашний кот, любит сидеть на подоконнике и мурчать на руках.</p>
 
-              <p class="card-text text-muted">
-                Беспроводные наушники с активным шумоподавлением.
-              </p>
-
-              <p class="fw-bold fs-5 mt-auto">12 990 руб.</p>
-
-              <div class="d-flex gap-2">
-                <a class="btn btn-primary" href="product.html">Подробнее</a>
-                <button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#orderModal"
-                >
-                  Заказать
-                </button>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-success btn-sm" href="order.html?pet=barsik">Хочу забрать</a>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="cat" data-age="6">
           <div class="card h-100 shadow-sm">
+            <div class="pet-photo bg-secondary-subtle card-img-top" role="img" aria-label="Фото: Луна">🐈‍⬛</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-3">
-                <h2 class="card-title h5">Смартфон Galaxy X</h2>
-                <span class="badge bg-warning text-dark">Хит</span>
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h5 mb-0">Луна</h3>
+                <span class="text-body-secondary small">Кошка</span>
               </div>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-primary">Новенькая</span></div>
+              <p class="small text-body-secondary mb-2">6 месяцев · девочка</p>
+              <p class="card-text">Игривая чёрная кошечка, быстро привыкает к людям и лотку.</p>
 
-              <p class="card-text text-muted">
-                6.5" AMOLED, 128 ГБ, 8 ГБ ОЗУ.
-              </p>
-
-              <p class="fw-bold fs-5 mt-auto">54 990 руб.</p>
-
-              <div class="d-flex gap-2">
-                <a class="btn btn-primary" href="product.html">Подробнее</a>
-                <button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#orderModal"
-                >
-                  Заказать
-                </button>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-success btn-sm" href="order.html?pet=luna">Хочу забрать</a>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="dog" data-age="48">
           <div class="card h-100 shadow-sm">
+            <div class="pet-photo bg-info-subtle card-img-top" role="img" aria-label="Фото: Рекс">🐕</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-3">
-                <h2 class="card-title h5">Ноутбук ProBook 15</h2>
-                <span class="badge bg-danger">Скидка</span>
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h5 mb-0">Рекс</h3>
+                <span class="text-body-secondary small">Собака</span>
               </div>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-success">Привит</span></div>
+              <p class="small text-body-secondary mb-2">4 года · мальчик</p>
+              <p class="card-text">Спокойный пёс среднего размера, знает команды и хорошо ходит на поводке.</p>
 
-              <p class="card-text text-muted">
-                Intel Core i7, 16 ГБ, SSD 512 ГБ.
-              </p>
-
-              <p class="fw-bold fs-5 mt-auto">89 990 руб.</p>
-
-              <div class="d-flex gap-2">
-                <a class="btn btn-primary" href="product.html">Подробнее</a>
-                <button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#orderModal"
-                >
-                  Заказать
-                </button>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-success btn-sm" href="order.html?pet=rex">Хочу забрать</a>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="dog" data-age="5">
           <div class="card h-100 shadow-sm">
+            <div class="pet-photo bg-warning-subtle card-img-top" role="img" aria-label="Фото: Пончик">🐶</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-3">
-                <h2 class="card-title h5">Смарт-часы FitBand</h2>
-                <span class="badge bg-success">Новинка</span>
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h5 mb-0">Пончик</h3>
+                <span class="text-body-secondary small">Собака</span>
               </div>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-primary">Новенький</span></div>
+              <p class="small text-body-secondary mb-2">5 месяцев · мальчик</p>
+              <p class="card-text">Весёлый щенок, обожает игрушки и прогулки. Вырастет средним.</p>
 
-              <p class="card-text text-muted">
-                AMOLED, GPS, автономность до 7 дней.
-              </p>
-
-              <p class="fw-bold fs-5 mt-auto">9 990 руб.</p>
-
-              <div class="d-flex gap-2">
-                <a class="btn btn-primary" href="product.html">Подробнее</a>
-                <button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#orderModal"
-                >
-                  Заказать
-                </button>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-success btn-sm" href="order.html?pet=ponchik">Хочу забрать</a>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="dog" data-age="84">
           <div class="card h-100 shadow-sm">
+            <div class="pet-photo bg-success-subtle card-img-top" role="img" aria-label="Фото: Майя">🦮</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-3">
-                <h2 class="card-title h5">Монитор UltraView 27"</h2>
-                <span class="badge bg-warning text-dark">Хит</span>
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h5 mb-0">Майя</h3>
+                <span class="text-body-secondary small">Собака</span>
               </div>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-warning">Особый уход</span></div>
+              <p class="small text-body-secondary mb-2">7 лет · девочка</p>
+              <p class="card-text">Добрая взрослая собака, нужна спокойная семья и регулярные осмотры.</p>
 
-              <p class="card-text text-muted">
-                4K, IPS, 144 Гц.
-              </p>
-
-              <p class="fw-bold fs-5 mt-auto">32 990 руб.</p>
-
-              <div class="d-flex gap-2">
-                <a class="btn btn-primary" href="product.html">Подробнее</a>
-                <button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#orderModal"
-                >
-                  Заказать
-                </button>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-success btn-sm" href="order.html?pet=maya">Хочу забрать</a>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="other" data-age="12">
           <div class="card h-100 shadow-sm">
+            <div class="pet-photo bg-light-subtle card-img-top" role="img" aria-label="Фото: Тоша">🐇</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-3">
-                <h2 class="card-title h5">Клавиатура MechPro</h2>
-                <span class="badge bg-danger">Скидка</span>
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h5 mb-0">Тоша</h3>
+                <span class="text-body-secondary small">Другое</span>
               </div>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-success">Привит</span></div>
+              <p class="small text-body-secondary mb-2">1 год · мальчик</p>
+              <p class="card-text">Декоративный кролик, приучен к клетке и лотку, ест сено и овощи.</p>
 
-              <p class="card-text text-muted">
-                Механическая клавиатура с RGB-подсветкой.
-              </p>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-success btn-sm" href="order.html?pet=tosha">Хочу забрать</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="other" data-age="36">
+          <div class="card h-100 shadow-sm">
+            <div class="pet-photo bg-info-subtle card-img-top" role="img" aria-label="Фото: Кеша">🦜</div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h5 mb-0">Кеша</h3>
+                <span class="text-body-secondary small">Другое</span>
+              </div>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-primary">Новенький</span></div>
+              <p class="small text-body-secondary mb-2">3 года · мальчик</p>
+              <p class="card-text">Волнистый попугай, умеет говорить «Кеша хороший» и любит компанию.</p>
 
-              <p class="fw-bold fs-5 mt-auto">6 990 руб.</p>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-success btn-sm" href="order.html?pet=kesha">Хочу забрать</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="cat" data-age="108">
+          <div class="card h-100 shadow-sm">
+            <div class="pet-photo bg-danger-subtle card-img-top" role="img" aria-label="Фото: Рыжик">🐈</div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h3 class="card-title h5 mb-0">Рыжик</h3>
+                <span class="text-body-secondary small">Кошка</span>
+              </div>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-danger">Срочно ищет дом</span> <span class="badge text-bg-warning">Особый уход</span></div>
+              <p class="small text-body-secondary mb-2">9 лет · мальчик</p>
+              <p class="card-text">Мудрый рыжий кот на диете, ищет тихий дом, где его будут любить.</p>
 
-              <div class="d-flex gap-2">
-                <a class="btn btn-primary" href="product.html">Подробнее</a>
-                <button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#orderModal"
-                >
-                  Заказать
-                </button>
+              <div class="d-flex gap-2 mt-auto">
+                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-success btn-sm" href="order.html?pet=ryzhik">Хочу забрать</a>
               </div>
             </div>
           </div>
         </div>
     </div>
 
-    <nav class="mt-5" aria-label="Страницы каталога">
+    <div id="petEmpty" class="alert alert-secondary mt-4 d-none" role="status">
+      В этой категории пока никого нет.
+    </div>
+
+    <nav aria-label="Страницы каталога" class="mt-5">
       <ul class="pagination justify-content-center">
         <li class="page-item disabled">
           <span class="page-link">Назад</span>
@@ -260,69 +318,101 @@
         <li class="page-item active" aria-current="page">
           <span class="page-link">1</span>
         </li>
-        <li class="page-item"><a class="page-link" href="catalog.html">2</a></li>
-        <li class="page-item"><a class="page-link" href="catalog.html">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item">
-          <a class="page-link" href="catalog.html">Вперёд</a>
+          <a class="page-link" href="#">Вперёд</a>
         </li>
       </ul>
     </nav>
   </main>
 
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <p class="fw-semibold mb-1">🐾 Приют «Хвостики»</p>
+          <p class="mb-1 opacity-75">г. Москва, ул. Лесная, д. 12</p>
+          <p class="mb-0 opacity-75">&copy; 2026 Учебный проект КР №2</p>
+        </div>
+
+        <div class="col-12 col-md-6 text-md-end">
+          <a class="text-white text-decoration-none me-3" href="catalog.html">Питомцы</a>
+          <a class="text-white text-decoration-none me-3" href="order.html">Заявка</a>
+          <a class="text-white text-decoration-none me-3" href="help.html">Помочь</a>
+          <a class="text-white text-decoration-none" href="contacts.html">Контакты</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <div
     class="modal fade"
-    id="orderModal"
+    id="visitModal"
     tabindex="-1"
-    aria-labelledby="orderModalLabel"
+    aria-labelledby="visitModalLabel"
     aria-hidden="true"
   >
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title h5" id="orderModalLabel">
-            Быстрая заявка
-          </h2>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Закрыть"
-          ></button>
-        </div>
+        <form class="js-validate-form" novalidate>
+          <div class="modal-header">
+            <h2 class="modal-title h5" id="visitModalLabel">
+              Записаться на знакомство
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Закрыть"
+            ></button>
+          </div>
 
-        <div class="modal-body">
-          <p class="text-muted">
-            Оставьте контактные данные, и менеджер свяжется с вами.
-          </p>
+          <div class="modal-body">
+            <p class="text-body-secondary">
+              Приходите познакомиться с питомцем вживую. Мы подтвердим время по телефону.
+            </p>
 
-          <form id="modal-form" class="js-validate-form" novalidate>
             <div class="mb-3">
-              <label for="modal-name" class="form-label">Имя</label>
-              <input id="modal-name" name="name" type="text" class="form-control" required>
+              <label for="visit-name" class="form-label">Имя *</label>
+              <input id="visit-name" name="name" type="text" class="form-control" required>
+              <div class="invalid-feedback">Введите имя.</div>
             </div>
 
             <div class="mb-3">
-              <label for="modal-phone" class="form-label">Телефон</label>
-              <input id="modal-phone" name="phone" type="tel" class="form-control" required>
+              <label for="visit-phone" class="form-label">Телефон *</label>
+              <input id="visit-phone" name="phone" type="tel" class="form-control" required>
+              <div class="invalid-feedback">Введите телефон.</div>
             </div>
 
-            <div class="form-check mb-3">
-              <input id="modal-agree" name="agree" class="form-check-input" type="checkbox" required>
-              <label class="form-check-label" for="modal-agree">
+            <div class="mb-3">
+              <label for="visit-day" class="form-label">Удобный день *</label>
+              <select id="visit-day" name="day" class="form-select" required>
+                <option value="" selected>Выберите день</option>
+                <option value="sat">Суббота</option>
+                <option value="sun">Воскресенье</option>
+                <option value="weekday">Будний день после 17:00</option>
+              </select>
+              <div class="invalid-feedback">Выберите день визита.</div>
+            </div>
+
+            <div class="form-check">
+              <input id="visit-agree" name="agree" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="visit-agree">
                 Согласен на обработку данных
               </label>
             </div>
-          </form>
-        </div>
+          </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Закрыть
-          </button>
-          <button type="submit" class="btn btn-primary" form="modal-form">
-            Отправить
-          </button>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Закрыть
+            </button>
+            <button type="submit" class="btn btn-success">
+              Записаться
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -331,36 +421,12 @@
     <div id="formToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
       <div class="d-flex">
         <div class="toast-body">
-          Спасибо! Заявка отправлена, менеджер свяжется с вами.
+          Спасибо! Заявка отправлена, мы свяжемся с вами в течение дня.
         </div>
         <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
       </div>
     </div>
   </div>
-
-  <footer class="bg-dark text-white py-4 mt-5">
-    <div class="container">
-      <div class="row align-items-center g-3">
-        <div class="col-12 col-md-6">
-          <p class="mb-0">
-            &copy; 2026 Bootstrap Shop. Учебный проект.
-          </p>
-        </div>
-
-        <div class="col-12 col-md-6 text-md-end">
-          <a class="text-white text-decoration-none me-3" href="catalog.html">
-            Каталог
-          </a>
-          <a class="text-white text-decoration-none me-3" href="order.html">
-            Заявка
-          </a>
-          <a class="text-white text-decoration-none" href="contacts.html">
-            Контакты
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
