@@ -1,3 +1,4 @@
+// 1. Валидация форм и toast об успешной отправке
 const forms = document.querySelectorAll('.js-validate-form');
 const toastElement = document.getElementById('formToast');
 
@@ -23,3 +24,79 @@ forms.forEach((form) => {
     }
   });
 });
+
+// 2. Фильтр и сортировка питомцев в каталоге
+const petList = document.getElementById('petList');
+
+if (petList) {
+  const filterButtons = document.querySelectorAll('input[name="petFilter"]');
+  const sortSelect = document.getElementById('petSort');
+  const countElement = document.getElementById('petCount');
+  const emptyMessage = document.getElementById('petEmpty');
+  const items = Array.from(petList.querySelectorAll('.pet-item'));
+
+  function updateCatalog() {
+    const type = document.querySelector('input[name="petFilter"]:checked').value;
+    const sort = sortSelect.value;
+
+    const sorted = [...items];
+    if (sort === 'young') {
+      sorted.sort((a, b) => a.dataset.age - b.dataset.age);
+    } else if (sort === 'old') {
+      sorted.sort((a, b) => b.dataset.age - a.dataset.age);
+    }
+
+    let visible = 0;
+    sorted.forEach((item) => {
+      const show = type === 'all' || item.dataset.type === type;
+      item.classList.toggle('d-none', !show);
+      petList.appendChild(item);
+      if (show) visible++;
+    });
+
+    countElement.textContent = visible;
+    emptyMessage.classList.toggle('d-none', visible > 0);
+  }
+
+  filterButtons.forEach((button) => button.addEventListener('change', updateCatalog));
+  sortSelect.addEventListener('change', updateCatalog);
+}
+
+// 3. Подстановка выбранного питомца в форму заявки (order.html?pet=barsik)
+const petSelect = document.getElementById('order-pet');
+
+if (petSelect) {
+  const petId = new URLSearchParams(window.location.search).get('pet');
+  const option = petId ? petSelect.querySelector(`option[value="${CSS.escape(petId)}"]`) : null;
+
+  if (option) {
+    petSelect.value = petId;
+    const alertElement = document.getElementById('selectedPetAlert');
+    alertElement.textContent = `Вы выбрали питомца: ${option.textContent}. Осталось заполнить анкету.`;
+    alertElement.classList.remove('d-none');
+  }
+}
+
+// 4. Переключение светлой и тёмной темы
+const themeToggle = document.getElementById('themeToggle');
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-bs-theme', theme);
+  if (themeToggle) {
+    themeToggle.textContent = theme === 'dark' ? '☀️ Светлая' : '🌙 Тёмная';
+  }
+}
+
+applyTheme(document.documentElement.getAttribute('data-bs-theme') || 'light');
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch (e) {
+      // localStorage может быть недоступен — тема просто не запомнится
+    }
+  });
+}
