@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Лебедь-шипун Белла: история, лечение и как помочь — центр реабилитации птиц «Крылья».">
+  <title>Белла — Центр реабилитации птиц «Крылья»</title>
+
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) document.documentElement.setAttribute('data-bs-theme', savedTheme);
+    } catch (e) {}
+  </script>
+
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+  <header class="bg-primary text-white py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <p class="h3 mb-1">🪶 Центр «Крылья»</p>
+          <p class="mb-0 opacity-75">
+            Лечим диких птиц и возвращаем их в природу
+          </p>
+        </div>
+
+        <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
+          <a class="btn btn-light btn-sm text-primary fw-semibold" href="tel:+79000000000">
+            Нашли птицу? +7 (900) 000-00-00
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Крылья</a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Переключить навигацию"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="catalog.html">Подопечные</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="product.html">Птица</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="order.html">Заявка</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="help.html">Помочь</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contacts.html">Контакты</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Дополнительно
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="catalog.html">Все подопечные</a></li>
+              <li><a class="dropdown-item" href="contacts.html#found">Нашли птицу?</a></li>
+              <li><a class="dropdown-item" href="help.html#volunteer">Стать волонтёром</a></li>
+            </ul>
+          </li>
+          <li class="nav-item ms-lg-2">
+            <button
+              id="themeToggle"
+              class="btn btn-outline-light btn-sm"
+              type="button"
+              aria-label="Переключить тему"
+            >
+              🌙 Тёмная
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
+        <li class="breadcrumb-item"><a href="catalog.html">Подопечные</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Белла</li>
+      </ol>
+    </nav>
+
+    <div class="row g-4">
+      <div class="col-12 col-lg-6">
+        <div class="card shadow-sm">
+          <div class="bird-photo bird-photo-lg bg-light-subtle rounded" role="img" aria-label="Лебедь-шипун Белла">🦢</div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <div class="d-flex flex-wrap gap-1 mb-3"><span class="badge text-bg-warning">На лечении</span> <span class="badge text-bg-primary">Ищет опекуна</span></div>
+        <h1 class="h2">Белла</h1>
+        <p class="text-body-secondary">Лебедь-шипун · 5 лет · водоплавающая птица</p>
+        <p class="lead">
+          Беллу нашли на берегу озера: она не могла держать голову. Анализ показал отравление свинцом — птицы глотают старую дробь со дна вместе с камешками. Лечение долгое, но Белла уже сама ест и чистит перья.
+        </p>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+          <a class="btn btn-primary btn-lg" href="order.html?bird=bella">
+            Помочь Белле
+          </a>
+          <button
+            class="btn btn-outline-primary btn-lg"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#tourModal"
+          >
+            Экскурсия
+          </button>
+        </div>
+
+        <div class="alert alert-warning" role="alert">
+          Лечение Беллы стоит дорого: капельницы и анализы — около 25 000 руб. Идёт сбор на странице «Помочь».
+        </div>
+      </div>
+    </div>
+
+    <section class="mt-5">
+      <ul class="nav nav-tabs" id="birdTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-pane" type="button" role="tab" aria-controls="about-pane" aria-selected="true">
+            О птице
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="care-tab" data-bs-toggle="tab" data-bs-target="#care-pane" type="button" role="tab" aria-controls="care-pane" aria-selected="false">
+            Лечение
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="help-tab" data-bs-toggle="tab" data-bs-target="#help-pane" type="button" role="tab" aria-controls="help-pane" aria-selected="false">
+            Как помочь
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content border border-top-0 rounded-bottom p-4" id="birdTabsContent">
+        <div class="tab-pane fade show active" id="about-pane" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered align-middle mb-0">
+              <tbody>
+                <tr><th scope="row">Вид</th><td>Лебедь-шипун</td></tr>
+                <tr><th scope="row">Возраст</th><td>около 5 лет</td></tr>
+                <tr><th scope="row">Поступила</th><td>август 2026</td></tr>
+                <tr><th scope="row">Причина</th><td>Отравление свинцом</td></tr>
+                <tr><th scope="row">Прогноз</th><td>Осторожный, лечение 3–4 месяца</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="care-pane" role="tabpanel" aria-labelledby="care-tab" tabindex="0">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">✅ Промывание и капельницы</li>
+            <li class="list-group-item">⏳ Курс препаратов, выводящих свинец</li>
+            <li class="list-group-item">⏳ Анализ крови раз в две недели</li>
+            <li class="list-group-item">🗓️ Плавание в большом бассейне</li>
+          </ul>
+        </div>
+
+        <div class="tab-pane fade" id="help-pane" role="tabpanel" aria-labelledby="help-tab" tabindex="0">
+          <p class="mb-0">Белле очень нужен опекун: помощь с оплатой анализов и лекарств. После выздоровления её выпустят на озеро.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <h2 class="h4 mb-3">Частые вопросы</h2>
+
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faqOne"
+              aria-expanded="true"
+              aria-controls="faqOne"
+            >
+              Что делать, если я нашёл раненую птицу?
+            </button>
+          </h3>
+          <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Аккуратно посадите её в коробку с отверстиями, поставьте в тёплое тихое место,
+              не кормите и не поите насильно — и сразу позвоните нам.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faqTwo"
+              aria-expanded="false"
+              aria-controls="faqTwo"
+            >
+              Можно ли забрать дикую птицу домой?
+            </button>
+          </h3>
+          <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Нет. Дикие птицы после лечения возвращаются в природу. Домой отдаём только тех,
+              кто не сможет выжить на воле: например, голубя без крыла или домашнего попугая.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faqThree"
+              aria-expanded="false"
+              aria-controls="faqThree"
+            >
+              Что значит стать опекуном?
+            </button>
+          </h3>
+          <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Опекун помогает оплачивать корм и лечение конкретной птицы. Взамен мы присылаем
+              фото и новости, а на выпуск приглашаем лично.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <h2 class="h4 mb-3">Другие подопечные</h2>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="bird-photo bg-success-subtle card-img-top" role="img" aria-label="Кряква Дуся">🦆</div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Дуся</h3>
+                <span class="text-body-secondary small">Водоплавающие</span>
+              </div>
+              <p class="small text-body-secondary mb-2">Кряква · 1 год</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-success">Готовится к выпуску</span></div>
+              <p class="card-text">Её нашли с рыболовной леской на лапе. Рана зажила, скоро вернётся на пруд.</p>
+
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product-dusya.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=dusya">Помочь Дусе</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="bird-photo bg-warning-subtle card-img-top" role="img" aria-label="Серая неясыть Филя">🦉</div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Филя</h3>
+                <span class="text-body-secondary small">Хищные</span>
+              </div>
+              <p class="small text-body-secondary mb-2">Серая неясыть · 2 года</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-success">Готовится к выпуску</span></div>
+              <p class="card-text">Пострадал от машины на трассе. Крыло срослось, сейчас заново учится охотиться.</p>
+
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=filya">Помочь Филе</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="bird-photo bg-secondary-subtle card-img-top" role="img" aria-label="Ястреб-тетеревятник Гром">🦅</div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Гром</h3>
+                <span class="text-body-secondary small">Хищные</span>
+              </div>
+              <p class="small text-body-secondary mb-2">Ястреб-тетеревятник · 3 года</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-warning">На лечении</span></div>
+              <p class="card-text">Повредил крыло о провода. Проходит курс лечения и физиотерапии.</p>
+
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product-grom.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=grom">Помочь Грому</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <p class="fw-semibold mb-1">🪶 Центр реабилитации птиц «Крылья»</p>
+          <p class="mb-1 opacity-75">г. Москва, ул. Лесная, д. 12</p>
+          <p class="mb-0 opacity-75">&copy; 2026 Учебный проект КР №2</p>
+        </div>
+
+        <div class="col-12 col-md-6 text-md-end">
+          <a class="text-white text-decoration-none me-3" href="catalog.html">Подопечные</a>
+          <a class="text-white text-decoration-none me-3" href="order.html">Заявка</a>
+          <a class="text-white text-decoration-none me-3" href="help.html">Помочь</a>
+          <a class="text-white text-decoration-none" href="contacts.html">Контакты</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div
+    class="modal fade"
+    id="tourModal"
+    tabindex="-1"
+    aria-labelledby="tourModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form class="js-validate-form" novalidate>
+          <div class="modal-header">
+            <h2 class="modal-title h5" id="tourModalLabel">
+              Записаться на экскурсию
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Закрыть"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <p class="text-body-secondary">
+              На экскурсии вы увидите вольеры, познакомитесь с птицами-«послами» и узнаете, как помочь найденной птице.
+            </p>
+
+            <div class="mb-3">
+              <label for="tour-name" class="form-label">Имя *</label>
+              <input id="tour-name" name="name" type="text" class="form-control" required>
+              <div class="invalid-feedback">Введите имя.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="tour-phone" class="form-label">Телефон *</label>
+              <input id="tour-phone" name="phone" type="tel" class="form-control" required>
+              <div class="invalid-feedback">Введите телефон.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="tour-day" class="form-label">Удобный день *</label>
+              <select id="tour-day" name="day" class="form-select" required>
+                <option value="" selected>Выберите день</option>
+                <option value="sat">Суббота, 12:00</option>
+                <option value="sun">Воскресенье, 12:00</option>
+                <option value="school">Будний день — для школьной группы</option>
+              </select>
+              <div class="invalid-feedback">Выберите день экскурсии.</div>
+            </div>
+
+            <div class="form-check">
+              <input id="tour-agree" name="agree" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="tour-agree">
+                Согласен на обработку данных
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Закрыть
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Записаться
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="formToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Спасибо! Заявка отправлена, мы свяжемся с вами в течение дня.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
