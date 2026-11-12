@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог питомцев приюта «Хвостики»: кошки и собаки, которые ищут дом.">
-  <title>Питомцы — Приют «Хвостики»</title>
+  <meta name="description" content="Подопечные центра «Крылья»: хищные, певчие, водоплавающие и городские птицы на лечении и реабилитации.">
+  <title>Подопечные — Центр реабилитации птиц «Крылья»</title>
 
   <script>
     try {
@@ -17,19 +17,19 @@
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-  <header class="bg-success text-white py-4">
+  <header class="bg-primary text-white py-4">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12 col-md-8">
-          <p class="h3 mb-1">🐾 Приют «Хвостики»</p>
+          <p class="h3 mb-1">🪶 Центр «Крылья»</p>
           <p class="mb-0 opacity-75">
-            Помогаем кошкам, собакам и другим животным найти дом
+            Лечим диких птиц и возвращаем их в природу
           </p>
         </div>
 
         <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
-          <a class="btn btn-light btn-sm text-success fw-semibold" href="tel:+79000000000">
-            +7 (900) 000-00-00
+          <a class="btn btn-light btn-sm text-primary fw-semibold" href="tel:+79000000000">
+            Нашли птицу? +7 (900) 000-00-00
           </a>
         </div>
       </div>
@@ -38,7 +38,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Хвостики</a>
+      <a class="navbar-brand" href="index.html">Крылья</a>
 
       <button
         class="navbar-toggler"
@@ -58,10 +58,10 @@
             <a class="nav-link" href="index.html">Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="catalog.html">Питомцы</a>
+            <a class="nav-link active" aria-current="page" href="catalog.html">Подопечные</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="product.html">Питомец</a>
+            <a class="nav-link" href="product.html">Птица</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="order.html">Заявка</a>
@@ -83,8 +83,8 @@
               Дополнительно
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="catalog.html">Все питомцы</a></li>
-              <li><a class="dropdown-item" href="index.html#urgent">Срочно ищут дом</a></li>
+              <li><a class="dropdown-item" href="catalog.html">Все подопечные</a></li>
+              <li><a class="dropdown-item" href="contacts.html#found">Нашли птицу?</a></li>
               <li><a class="dropdown-item" href="help.html#volunteer">Стать волонтёром</a></li>
             </ul>
           </li>
@@ -105,188 +105,213 @@
 
   <main class="container my-5">
     <div class="alert alert-info" role="alert">
-      Нажмите «Хочу забрать» на карточке — питомец сразу подставится в форму заявки.
+      Дикие птицы после лечения возвращаются в природу — им можно помочь опекой.
+      Домой забирают только тех, кто не сможет жить на воле (значок «Ищет дом»).
     </div>
 
     <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center mb-4">
-      <h1 class="h2 mb-0">Наши питомцы</h1>
+      <h1 class="h2 mb-0">Наши подопечные</h1>
       <button
-        class="btn btn-outline-success"
+        class="btn btn-outline-primary"
         type="button"
         data-bs-toggle="modal"
-        data-bs-target="#visitModal"
+        data-bs-target="#tourModal"
       >
-        Записаться на знакомство
+        Записаться на экскурсию
       </button>
     </div>
 
     <div class="row g-3 align-items-center mb-4">
-      <div class="col-12 col-lg-6">
-        <div class="btn-group flex-wrap" role="group" aria-label="Фильтр по виду животного">
-          <input type="radio" class="btn-check" name="petFilter" id="filter-all" value="all" checked>
-          <label class="btn btn-outline-success" for="filter-all">Все</label>
+      <div class="col-12 col-xl-7">
+        <div class="btn-group flex-wrap" role="group" aria-label="Фильтр по группе птиц">
+          <input type="radio" class="btn-check" name="birdFilter" id="filter-all" value="all" checked>
+          <label class="btn btn-outline-primary" for="filter-all">Все</label>
 
-          <input type="radio" class="btn-check" name="petFilter" id="filter-cat" value="cat">
-          <label class="btn btn-outline-success" for="filter-cat">Кошки</label>
+          <input type="radio" class="btn-check" name="birdFilter" id="filter-predator" value="predator">
+          <label class="btn btn-outline-primary" for="filter-predator">Хищные</label>
 
-          <input type="radio" class="btn-check" name="petFilter" id="filter-dog" value="dog">
-          <label class="btn btn-outline-success" for="filter-dog">Собаки</label>
+          <input type="radio" class="btn-check" name="birdFilter" id="filter-song" value="song">
+          <label class="btn btn-outline-primary" for="filter-song">Певчие</label>
 
+          <input type="radio" class="btn-check" name="birdFilter" id="filter-water" value="water">
+          <label class="btn btn-outline-primary" for="filter-water">Водоплавающие</label>
+
+          <input type="radio" class="btn-check" name="birdFilter" id="filter-city" value="city">
+          <label class="btn btn-outline-primary" for="filter-city">Городские</label>
         </div>
       </div>
 
-      <div class="col-12 col-md-6 col-lg-3">
-        <label for="petSort" class="visually-hidden">Сортировка</label>
-        <select id="petSort" class="form-select">
+      <div class="col-12 col-md-6 col-xl-3">
+        <label for="birdSort" class="visually-hidden">Сортировка</label>
+        <select id="birdSort" class="form-select">
           <option value="default" selected>Без сортировки</option>
           <option value="young">Сначала молодые</option>
           <option value="old">Сначала взрослые</option>
         </select>
       </div>
 
-      <div class="col-12 col-md-6 col-lg-3 text-md-end">
-        <span class="text-body-secondary">Найдено: <span id="petCount" class="fw-bold">7</span></span>
+      <div class="col-12 col-md-6 col-xl-2 text-md-end">
+        <span class="text-body-secondary">Найдено: <span id="birdCount" class="fw-bold">8</span></span>
       </div>
     </div>
 
-    <div class="row g-4" id="petList">
-        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="cat" data-age="3">
+    <div class="row g-4" id="birdList">
+        <div class="col-12 col-md-6 col-lg-3 bird-item" data-type="predator" data-age="24">
           <div class="card h-100 shadow-sm">
-            <img src="images/barsik.jpg" class="card-img-top pet-img" alt="Полосатый котёнок Барсик сидит на столе у ветеринара" loading="lazy">
+            <div class="bird-photo bg-warning-subtle card-img-top" role="img" aria-label="Серая неясыть Филя">🦉</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h5 mb-0">Барсик</h3>
-                <span class="text-body-secondary small">Кошка</span>
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Филя</h3>
+                <span class="text-body-secondary small">Хищные</span>
               </div>
-              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-primary">Новенький</span> <span class="badge text-bg-success">Привит</span></div>
-              <p class="small text-body-secondary mb-2">3 месяца · мальчик</p>
-              <p class="card-text">Любопытный полосатый котёнок, уже знает лоток и обожает играть с бантиком.</p>
+              <p class="small text-body-secondary mb-2">Серая неясыть · 2 года</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-success">Готовится к выпуску</span></div>
+              <p class="card-text">Пострадал от машины на трассе. Крыло срослось, сейчас заново учится охотиться.</p>
 
-              <div class="d-flex gap-2 mt-auto">
-                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
-                <a class="btn btn-outline-success btn-sm" href="order.html?pet=barsik">Хочу забрать</a>
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=filya">Помочь Филе</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="dog" data-age="36">
+        <div class="col-12 col-md-6 col-lg-3 bird-item" data-type="predator" data-age="36">
           <div class="card h-100 shadow-sm">
-            <img src="images/lola.jpg" class="card-img-top pet-img" alt="Такса Лола смотрит в камеру" loading="lazy">
+            <div class="bird-photo bg-secondary-subtle card-img-top" role="img" aria-label="Ястреб-тетеревятник Гром">🦅</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h5 mb-0">Лола</h3>
-                <span class="text-body-secondary small">Собака</span>
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Гром</h3>
+                <span class="text-body-secondary small">Хищные</span>
               </div>
-              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-success">Привит</span></div>
-              <p class="small text-body-secondary mb-2">3 года · девочка</p>
-              <p class="card-text">Кокетливая такса с самым выразительным взглядом. Любит диван и пледы.</p>
+              <p class="small text-body-secondary mb-2">Ястреб-тетеревятник · 3 года</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-warning">На лечении</span></div>
+              <p class="card-text">Повредил крыло о провода. Проходит курс лечения и физиотерапии.</p>
 
-              <div class="d-flex gap-2 mt-auto">
-                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
-                <a class="btn btn-outline-success btn-sm" href="order.html?pet=lola">Хочу забрать</a>
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product-grom.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=grom">Помочь Грому</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="cat" data-age="60">
+        <div class="col-12 col-md-6 col-lg-3 bird-item" data-type="city" data-age="12">
           <div class="card h-100 shadow-sm">
-            <img src="images/ryzhik.jpg" class="card-img-top pet-img" alt="Рыжий кот Рыжик широко открыл рот" loading="lazy">
+            <div class="bird-photo bg-info-subtle card-img-top" role="img" aria-label="Сизый голубь Вася">🕊️</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h5 mb-0">Рыжик</h3>
-                <span class="text-body-secondary small">Кошка</span>
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Вася</h3>
+                <span class="text-body-secondary small">Городские</span>
               </div>
-              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-danger">Срочно ищет дом</span></div>
-              <p class="small text-body-secondary mb-2">5 лет · мальчик</p>
-              <p class="card-text">Очень разговорчивый рыжий кот: громко здоровается с каждым гостем.</p>
+              <p class="small text-body-secondary mb-2">Сизый голубь · 1 год</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-danger">Ищет дом</span></div>
+              <p class="card-text">Потерял часть крыла и не сможет летать. Ищет дом с просторной клеткой.</p>
 
-              <div class="d-flex gap-2 mt-auto">
-                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
-                <a class="btn btn-outline-success btn-sm" href="order.html?pet=ryzhik">Хочу забрать</a>
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product-vasya.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=vasya">Помочь Васе</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="dog" data-age="12">
+        <div class="col-12 col-md-6 col-lg-3 bird-item" data-type="city" data-age="48">
           <div class="card h-100 shadow-sm">
-            <img src="images/ponchik.jpg" class="card-img-top pet-img" alt="Белый шпиц Пончик улыбается в саду" loading="lazy">
+            <div class="bird-photo bg-dark-subtle card-img-top" role="img" aria-label="Серая ворона Карла">🐦‍⬛</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h5 mb-0">Пончик</h3>
-                <span class="text-body-secondary small">Собака</span>
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Карла</h3>
+                <span class="text-body-secondary small">Городские</span>
               </div>
-              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-primary">Новенький</span> <span class="badge text-bg-success">Привит</span></div>
-              <p class="small text-body-secondary mb-2">1 год · мальчик</p>
-              <p class="card-text">Весёлый шпиц-облачко, всегда улыбается и легко ладит с детьми.</p>
+              <p class="small text-body-secondary mb-2">Серая ворона · 4 года</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-primary">Ищет опекуна</span></div>
+              <p class="card-text">Очень умная ворона: открывает коробочки и узнаёт волонтёров по голосу.</p>
 
-              <div class="d-flex gap-2 mt-auto">
-                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
-                <a class="btn btn-outline-success btn-sm" href="order.html?pet=ponchik">Хочу забрать</a>
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product-karla.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=karla">Помочь Карле</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="cat" data-age="36">
+        <div class="col-12 col-md-6 col-lg-3 bird-item" data-type="water" data-age="12">
           <div class="card h-100 shadow-sm">
-            <img src="images/zefirka.jpg" class="card-img-top pet-img" alt="Пушистая кошка Зефирка в розовой шляпе сидит на пне" loading="lazy">
+            <div class="bird-photo bg-success-subtle card-img-top" role="img" aria-label="Кряква Дуся">🦆</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h5 mb-0">Зефирка</h3>
-                <span class="text-body-secondary small">Кошка</span>
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Дуся</h3>
+                <span class="text-body-secondary small">Водоплавающие</span>
               </div>
-              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-success">Привит</span></div>
-              <p class="small text-body-secondary mb-2">3 года · девочка</p>
-              <p class="card-text">Пушистая модница с голубыми глазами. Спокойно относится к расчёсыванию.</p>
+              <p class="small text-body-secondary mb-2">Кряква · 1 год</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-success">Готовится к выпуску</span></div>
+              <p class="card-text">Её нашли с рыболовной леской на лапе. Рана зажила, скоро вернётся на пруд.</p>
 
-              <div class="d-flex gap-2 mt-auto">
-                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
-                <a class="btn btn-outline-success btn-sm" href="order.html?pet=zefirka">Хочу забрать</a>
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product-dusya.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=dusya">Помочь Дусе</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="dog" data-age="48">
+        <div class="col-12 col-md-6 col-lg-3 bird-item" data-type="water" data-age="60">
           <div class="card h-100 shadow-sm">
-            <img src="images/keks.jpg" class="card-img-top pet-img" alt="Рыжая сиба-ину Кекс, которой оттягивают щёки" loading="lazy">
+            <div class="bird-photo bg-light-subtle card-img-top" role="img" aria-label="Лебедь-шипун Белла">🦢</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h5 mb-0">Кекс</h3>
-                <span class="text-body-secondary small">Собака</span>
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Белла</h3>
+                <span class="text-body-secondary small">Водоплавающие</span>
               </div>
-              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-danger">Срочно ищет дом</span> <span class="badge text-bg-success">Привит</span></div>
-              <p class="small text-body-secondary mb-2">4 года · мальчик</p>
-              <p class="card-text">Терпеливый пёс породы сиба-ину. Разрешает себя тискать и знает команды.</p>
+              <p class="small text-body-secondary mb-2">Лебедь-шипун · 5 лет</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-warning">На лечении</span> <span class="badge text-bg-primary">Ищет опекуна</span></div>
+              <p class="card-text">Отравилась свинцовой дробью со дна озера. Нужен долгий курс лечения.</p>
 
-              <div class="d-flex gap-2 mt-auto">
-                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
-                <a class="btn btn-outline-success btn-sm" href="order.html?pet=keks">Хочу забрать</a>
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product-bella.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=bella">Помочь Белле</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-3 pet-item" data-type="dog" data-age="24">
+        <div class="col-12 col-md-6 col-lg-3 bird-item" data-type="song" data-age="6">
           <div class="card h-100 shadow-sm">
-            <img src="images/kroha.jpg" class="card-img-top pet-img" alt="Маленькая чихуахуа Кроха с фиолетовым шарфиком" loading="lazy">
+            <div class="bird-photo bg-danger-subtle card-img-top" role="img" aria-label="Снегирь Рубин">🐦</div>
             <div class="card-body d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h5 mb-0">Кроха</h3>
-                <span class="text-body-secondary small">Собака</span>
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Рубин</h3>
+                <span class="text-body-secondary small">Певчие</span>
               </div>
-              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-warning">Особый уход</span></div>
-              <p class="small text-body-secondary mb-2">2 года · девочка</p>
-              <p class="card-text">Крошечная чихуахуа. Мёрзнет, поэтому ищет дом, где ей свяжут свитер.</p>
+              <p class="small text-body-secondary mb-2">Снегирь · 6 месяцев</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-info">Новенький</span> <span class="badge text-bg-warning">На лечении</span></div>
+              <p class="card-text">Врезался в окно в мороз. Отдыхает в тёплом вольере и набирается сил.</p>
 
-              <div class="d-flex gap-2 mt-auto">
-                <a class="btn btn-success btn-sm" href="product.html">Подробнее</a>
-                <a class="btn btn-outline-success btn-sm" href="order.html?pet=kroha">Хочу забрать</a>
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product-rubin.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=rubin">Помочь Рубину</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 bird-item" data-type="song" data-age="36">
+          <div class="card h-100 shadow-sm">
+            <div class="bird-photo bg-primary-subtle card-img-top" role="img" aria-label="Волнистый попугай Кеша">🦜</div>
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-1">
+                <h3 class="card-title h5 mb-0">Кеша</h3>
+                <span class="text-body-secondary small">Певчие</span>
+              </div>
+              <p class="small text-body-secondary mb-2">Волнистый попугай · 3 года</p>
+              <div class="d-flex flex-wrap gap-1 mb-2"><span class="badge text-bg-danger">Ищет дом</span></div>
+              <p class="card-text">Домашний попугай, улетел от хозяев зимой. Хозяева не нашлись.</p>
+
+              <div class="d-flex flex-wrap gap-2 mt-auto">
+                <a class="btn btn-primary btn-sm" href="product-kesha.html">Подробнее</a>
+                <a class="btn btn-outline-primary btn-sm" href="order.html?bird=kesha">Помочь Кеше</a>
               </div>
             </div>
           </div>
         </div>
     </div>
 
-    <div id="petEmpty" class="alert alert-secondary mt-4 d-none" role="status">
-      В этой категории пока никого нет.
+    <div id="birdEmpty" class="alert alert-secondary mt-4 d-none" role="status">
+      В этой группе сейчас нет птиц.
     </div>
 
     <nav aria-label="Страницы каталога" class="mt-5">
@@ -310,13 +335,13 @@
     <div class="container">
       <div class="row g-3">
         <div class="col-12 col-md-6">
-          <p class="fw-semibold mb-1">🐾 Приют «Хвостики»</p>
+          <p class="fw-semibold mb-1">🪶 Центр реабилитации птиц «Крылья»</p>
           <p class="mb-1 opacity-75">г. Москва, ул. Лесная, д. 12</p>
           <p class="mb-0 opacity-75">&copy; 2026 Учебный проект КР №2</p>
         </div>
 
         <div class="col-12 col-md-6 text-md-end">
-          <a class="text-white text-decoration-none me-3" href="catalog.html">Питомцы</a>
+          <a class="text-white text-decoration-none me-3" href="catalog.html">Подопечные</a>
           <a class="text-white text-decoration-none me-3" href="order.html">Заявка</a>
           <a class="text-white text-decoration-none me-3" href="help.html">Помочь</a>
           <a class="text-white text-decoration-none" href="contacts.html">Контакты</a>
@@ -327,17 +352,17 @@
 
   <div
     class="modal fade"
-    id="visitModal"
+    id="tourModal"
     tabindex="-1"
-    aria-labelledby="visitModalLabel"
+    aria-labelledby="tourModalLabel"
     aria-hidden="true"
   >
     <div class="modal-dialog">
       <div class="modal-content">
         <form class="js-validate-form" novalidate>
           <div class="modal-header">
-            <h2 class="modal-title h5" id="visitModalLabel">
-              Записаться на знакомство
+            <h2 class="modal-title h5" id="tourModalLabel">
+              Записаться на экскурсию
             </h2>
             <button
               type="button"
@@ -349,35 +374,35 @@
 
           <div class="modal-body">
             <p class="text-body-secondary">
-              Приходите познакомиться с питомцем вживую. Мы подтвердим время по телефону.
+              На экскурсии вы увидите вольеры, познакомитесь с птицами-«послами» и узнаете, как помочь найденной птице.
             </p>
 
             <div class="mb-3">
-              <label for="visit-name" class="form-label">Имя *</label>
-              <input id="visit-name" name="name" type="text" class="form-control" required>
+              <label for="tour-name" class="form-label">Имя *</label>
+              <input id="tour-name" name="name" type="text" class="form-control" required>
               <div class="invalid-feedback">Введите имя.</div>
             </div>
 
             <div class="mb-3">
-              <label for="visit-phone" class="form-label">Телефон *</label>
-              <input id="visit-phone" name="phone" type="tel" class="form-control" required>
+              <label for="tour-phone" class="form-label">Телефон *</label>
+              <input id="tour-phone" name="phone" type="tel" class="form-control" required>
               <div class="invalid-feedback">Введите телефон.</div>
             </div>
 
             <div class="mb-3">
-              <label for="visit-day" class="form-label">Удобный день *</label>
-              <select id="visit-day" name="day" class="form-select" required>
+              <label for="tour-day" class="form-label">Удобный день *</label>
+              <select id="tour-day" name="day" class="form-select" required>
                 <option value="" selected>Выберите день</option>
-                <option value="sat">Суббота</option>
-                <option value="sun">Воскресенье</option>
-                <option value="weekday">Будний день после 17:00</option>
+                <option value="sat">Суббота, 12:00</option>
+                <option value="sun">Воскресенье, 12:00</option>
+                <option value="school">Будний день — для школьной группы</option>
               </select>
-              <div class="invalid-feedback">Выберите день визита.</div>
+              <div class="invalid-feedback">Выберите день экскурсии.</div>
             </div>
 
             <div class="form-check">
-              <input id="visit-agree" name="agree" class="form-check-input" type="checkbox" required>
-              <label class="form-check-label" for="visit-agree">
+              <input id="tour-agree" name="agree" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="tour-agree">
                 Согласен на обработку данных
               </label>
             </div>
@@ -387,7 +412,7 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Закрыть
             </button>
-            <button type="submit" class="btn btn-success">
+            <button type="submit" class="btn btn-primary">
               Записаться
             </button>
           </div>

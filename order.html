@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Заявка на пристройство питомца из приюта «Хвостики».">
-  <title>Заявка — Приют «Хвостики»</title>
+  <meta name="description" content="Заявка на опеку или пристройство птицы из центра «Крылья».">
+  <title>Заявка — Центр реабилитации птиц «Крылья»</title>
 
   <script>
     try {
@@ -17,19 +17,19 @@
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-  <header class="bg-success text-white py-4">
+  <header class="bg-primary text-white py-4">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12 col-md-8">
-          <p class="h3 mb-1">🐾 Приют «Хвостики»</p>
+          <p class="h3 mb-1">🪶 Центр «Крылья»</p>
           <p class="mb-0 opacity-75">
-            Помогаем кошкам, собакам и другим животным найти дом
+            Лечим диких птиц и возвращаем их в природу
           </p>
         </div>
 
         <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
-          <a class="btn btn-light btn-sm text-success fw-semibold" href="tel:+79000000000">
-            +7 (900) 000-00-00
+          <a class="btn btn-light btn-sm text-primary fw-semibold" href="tel:+79000000000">
+            Нашли птицу? +7 (900) 000-00-00
           </a>
         </div>
       </div>
@@ -38,7 +38,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Хвостики</a>
+      <a class="navbar-brand" href="index.html">Крылья</a>
 
       <button
         class="navbar-toggler"
@@ -58,10 +58,10 @@
             <a class="nav-link" href="index.html">Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="catalog.html">Питомцы</a>
+            <a class="nav-link" href="catalog.html">Подопечные</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="product.html">Питомец</a>
+            <a class="nav-link" href="product.html">Птица</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="order.html">Заявка</a>
@@ -83,8 +83,8 @@
               Дополнительно
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="catalog.html">Все питомцы</a></li>
-              <li><a class="dropdown-item" href="index.html#urgent">Срочно ищут дом</a></li>
+              <li><a class="dropdown-item" href="catalog.html">Все подопечные</a></li>
+              <li><a class="dropdown-item" href="contacts.html#found">Нашли птицу?</a></li>
               <li><a class="dropdown-item" href="help.html#volunteer">Стать волонтёром</a></li>
             </ul>
           </li>
@@ -107,17 +107,17 @@
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8">
         <div class="card shadow-sm">
-          <div class="card-header bg-success text-white">
-            <h1 class="h4 mb-0">Заявка на питомца</h1>
+          <div class="card-header bg-primary text-white">
+            <h1 class="h4 mb-0">Заявка на опеку или пристройство</h1>
           </div>
 
           <div class="card-body">
             <div class="alert alert-info" role="alert">
-              Заполните анкету — куратор позвонит и договорится о знакомстве.
+              Заполните анкету — куратор позвонит и расскажет подробности.
               Поля со звёздочкой обязательны.
             </div>
 
-            <div id="selectedPetAlert" class="alert alert-success d-none" role="status"></div>
+            <div id="selectedBirdAlert" class="alert alert-success d-none" role="status"></div>
 
             <form class="js-validate-form" novalidate>
               <div class="row g-3">
@@ -143,30 +143,31 @@
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label for="order-pet" class="form-label">Питомец *</label>
-                  <select id="order-pet" name="pet" class="form-select" required>
-                    <option value="" selected>Выберите питомца</option>
-                    <option value="barsik">Барсик (кошка, 3 месяца)</option>
-                    <option value="lola">Лола (собака, 3 года)</option>
-                    <option value="ryzhik">Рыжик (кошка, 5 лет)</option>
-                    <option value="ponchik">Пончик (собака, 1 год)</option>
-                    <option value="zefirka">Зефирка (кошка, 3 года)</option>
-                    <option value="keks">Кекс (собака, 4 года)</option>
-                    <option value="kroha">Кроха (собака, 2 года)</option>
+                  <label for="order-bird" class="form-label">Птица *</label>
+                  <select id="order-bird" name="bird" class="form-select" required>
+                    <option value="" selected>Выберите птицу</option>
+                    <option value="filya">Филя (серая неясыть)</option>
+                    <option value="grom">Гром (ястреб-тетеревятник)</option>
+                    <option value="vasya">Вася (сизый голубь)</option>
+                    <option value="karla">Карла (серая ворона)</option>
+                    <option value="dusya">Дуся (кряква)</option>
+                    <option value="bella">Белла (лебедь-шипун)</option>
+                    <option value="rubin">Рубин (снегирь)</option>
+                    <option value="kesha">Кеша (волнистый попугай)</option>
                   </select>
-                  <div class="invalid-feedback">Выберите питомца.</div>
+                  <div class="invalid-feedback">Выберите птицу.</div>
                 </div>
 
                 <div class="col-12 col-md-6">
                   <fieldset>
-                    <legend class="form-label fs-6">Где вы живёте? *</legend>
+                    <legend class="form-label fs-6">Как хотите помочь? *</legend>
                     <div class="form-check">
-                      <input id="home-flat" class="form-check-input" type="radio" name="home" value="flat" required>
-                      <label class="form-check-label" for="home-flat">Квартира</label>
+                      <input id="help-guardian" class="form-check-input" type="radio" name="helpType" value="guardian" required>
+                      <label class="form-check-label" for="help-guardian">Стать опекуном</label>
                     </div>
                     <div class="form-check">
-                      <input id="home-house" class="form-check-input" type="radio" name="home" value="house" required>
-                      <label class="form-check-label" for="home-house">Частный дом</label>
+                      <input id="help-home" class="form-check-input" type="radio" name="helpType" value="home" required>
+                      <label class="form-check-label" for="help-home">Забрать домой (если птица ищет дом)</label>
                     </div>
                   </fieldset>
                 </div>
@@ -174,32 +175,32 @@
                 <div class="col-12 col-md-6">
                   <p class="form-label mb-2">Дополнительно</p>
                   <div class="form-check form-switch">
-                    <input id="order-other-pets" name="otherPets" class="form-check-input" type="checkbox" role="switch">
-                    <label class="form-check-label" for="order-other-pets">Дома есть другие животные</label>
+                    <input id="order-experience" name="experience" class="form-check-input" type="checkbox" role="switch">
+                    <label class="form-check-label" for="order-experience">Есть опыт содержания птиц</label>
                   </div>
                   <div class="form-check form-switch">
-                    <input id="order-kids" name="kids" class="form-check-input" type="checkbox" role="switch">
-                    <label class="form-check-label" for="order-kids">В семье есть дети</label>
+                    <input id="order-pets" name="pets" class="form-check-input" type="checkbox" role="switch">
+                    <label class="form-check-label" for="order-pets">Дома есть кошки или собаки</label>
                   </div>
                 </div>
 
                 <div class="col-12">
-                  <label for="order-comment" class="form-label">Расскажите о себе</label>
-                  <textarea id="order-comment" name="comment" class="form-control" rows="4" placeholder="Был ли у вас опыт содержания животных?"></textarea>
+                  <label for="order-comment" class="form-label">Комментарий</label>
+                  <textarea id="order-comment" name="comment" class="form-control" rows="4" placeholder="Например, сумма ежемесячной опеки или условия дома"></textarea>
                 </div>
 
                 <div class="col-12">
                   <div class="form-check">
                     <input id="order-agree" name="agree" class="form-check-input" type="checkbox" required>
                     <label class="form-check-label" for="order-agree">
-                      Я согласен на обработку данных и с условиями пристройства *
+                      Я согласен на обработку данных *
                     </label>
                     <div class="invalid-feedback">Нужно ваше согласие.</div>
                   </div>
                 </div>
 
                 <div class="col-12 d-flex flex-wrap gap-2">
-                  <button class="btn btn-success" type="submit">
+                  <button class="btn btn-primary" type="submit">
                     Отправить заявку
                   </button>
                   <button class="btn btn-outline-secondary" type="reset">
@@ -218,13 +219,13 @@
     <div class="container">
       <div class="row g-3">
         <div class="col-12 col-md-6">
-          <p class="fw-semibold mb-1">🐾 Приют «Хвостики»</p>
+          <p class="fw-semibold mb-1">🪶 Центр реабилитации птиц «Крылья»</p>
           <p class="mb-1 opacity-75">г. Москва, ул. Лесная, д. 12</p>
           <p class="mb-0 opacity-75">&copy; 2026 Учебный проект КР №2</p>
         </div>
 
         <div class="col-12 col-md-6 text-md-end">
-          <a class="text-white text-decoration-none me-3" href="catalog.html">Питомцы</a>
+          <a class="text-white text-decoration-none me-3" href="catalog.html">Подопечные</a>
           <a class="text-white text-decoration-none me-3" href="order.html">Заявка</a>
           <a class="text-white text-decoration-none me-3" href="help.html">Помочь</a>
           <a class="text-white text-decoration-none" href="contacts.html">Контакты</a>
