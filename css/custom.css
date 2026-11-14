@@ -1,5 +1,48 @@
+/* Полная страница: два экрана, главная — три. Контент может расти свободно. */
 body {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 200vh;
+  min-height: 200svh;
+}
+
+body.home-page {
+  min-height: 300vh;
+  min-height: 300svh;
+}
+
+.site-header,
+.site-footer {
+  flex-shrink: 0;
+}
+
+.page-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(2rem, 4vh, 3.5rem);
+  padding-block: clamp(2rem, 4vh, 3.5rem);
+}
+
+/* Отступы между крупными блоками задаёт общий ритм, а не сумма utility-классов. */
+.page-content > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.site-header .navbar-brand {
+  font-weight: 600;
+}
+
+.site-footer a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.content-note {
+  border-left: 3px solid var(--bs-primary);
+  padding-left: 1.25rem;
 }
 
 /* Заглушка фото птицы: эмодзи на цветном фоне */

@@ -17,71 +17,55 @@
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-  <header class="bg-primary text-white py-4">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-md-8">
-          <p class="h3 mb-1">🪶 Центр «Крылья»</p>
-          <p class="mb-0 opacity-75">
-            Лечим диких птиц и возвращаем их в природу
-          </p>
-        </div>
+  <header class="site-header bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg py-3" aria-label="Основная навигация">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">🪶 Центр «Крылья»</a>
 
-        <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
-          <a class="btn btn-light btn-sm text-primary fw-semibold" href="tel:+79000000000">
-            Нашли птицу? +7 (900) 000-00-00
-          </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Переключить навигацию"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html">Подопечные</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#about">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="help.html">Помочь</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacts.html">Контакты</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <button
+                id="themeToggle"
+                class="btn btn-outline-light btn-sm"
+                type="button"
+                aria-label="Переключить тему"
+              >
+                🌙 Тёмная
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Крылья</a>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#mainNavbar"
-        aria-controls="mainNavbar"
-        aria-expanded="false"
-        aria-label="Переключить навигацию"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item">
-            <a class="nav-link" href="catalog.html">Подопечные</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.html#about">О нас</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="help.html">Помочь</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contacts.html">Контакты</a>
-          </li>
-          <li class="nav-item ms-lg-2">
-            <button
-              id="themeToggle"
-              class="btn btn-outline-light btn-sm"
-              type="button"
-              aria-label="Переключить тему"
-            >
-              🌙 Тёмная
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <main class="container my-5">
+  <main class="container page-content">
+    <div>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
@@ -123,6 +107,8 @@
           Карла живёт в центре постоянно. Ей нужен опекун, который поможет оплачивать корм и игрушки-головоломки.
         </div>
       </div>
+    </div>
+
     </div>
 
     <section class="mt-5">
@@ -171,6 +157,31 @@
           <p class="mb-0">Опека над Карлой — 2 000 руб. в месяц. Опекуны могут прийти на занятие и сами дать ей задачку.</p>
         </div>
       </div>
+    </section>
+
+    <section aria-labelledby="support-title">
+      <h2 class="h4 mb-4" id="support-title">Как поддержать подопечного</h2>
+      <div class="row g-4 mb-4">
+        <div class="col-12 col-md-4">
+          <div class="content-note">
+            <h3 class="h5">Выберите формат помощи</h3>
+            <p class="text-body-secondary mb-0">Посмотрите статус и историю птицы. Опека помогает с содержанием в центре, а новый дом возможен только для тех, кто не сможет вернуться в природу или относится к домашним видам.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="content-note">
+            <h3 class="h5">Обсудите детали с куратором</h3>
+            <p class="text-body-secondary mb-0">Оставьте заявку и расскажите о своих возможностях. Команда объяснит потребности птицы, особенности ухода и подходящие способы участия.</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="content-note">
+            <h3 class="h5">Согласуйте дальнейшие шаги</h3>
+            <p class="text-body-secondary mb-0">Не покупайте корм и не планируйте приезд без согласования. Поддержка должна соответствовать состоянию и рациону конкретного подопечного.</p>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-outline-primary" href="order.html?bird=karla">Обсудить помощь этой птице</a>
     </section>
 
     <section class="mt-5">
@@ -306,21 +317,28 @@
     </section>
   </main>
 
-  <footer class="bg-dark text-white py-4 mt-5">
+  <footer class="site-footer bg-dark text-white py-5">
     <div class="container">
-      <div class="row g-3">
-        <div class="col-12 col-md-6">
-          <p class="fw-semibold mb-1">🪶 Центр реабилитации птиц «Крылья»</p>
-          <p class="mb-1 opacity-75">г. Москва, ул. Лесная, д. 12</p>
-          <p class="mb-0 opacity-75">&copy; 2026 Центр реабилитации птиц «Крылья»</p>
+      <div class="row g-4">
+        <div class="col-12 col-lg-5">
+          <p class="fw-semibold mb-2">🪶 Центр реабилитации птиц «Крылья»</p>
+          <p class="mb-2 opacity-75">г. Москва, ул. Лесная, д. 12</p>
+          <p class="small mb-0 opacity-75">&copy; 2026 Центр «Крылья»</p>
         </div>
-
-        <div class="col-12 col-md-6 text-md-end">
-          <a class="text-white text-decoration-none me-3" href="index.html#about">О нас</a>
-          <a class="text-white text-decoration-none me-3" href="catalog.html">Подопечные</a>
-          <a class="text-white text-decoration-none me-3" href="order.html">Заявка</a>
-          <a class="text-white text-decoration-none me-3" href="help.html">Помочь</a>
-          <a class="text-white text-decoration-none" href="contacts.html">Контакты</a>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <nav class="d-flex flex-column align-items-start gap-2" aria-label="Навигация в подвале">
+            <a class="link-light text-decoration-none" href="index.html#about">О нас</a>
+            <a class="link-light text-decoration-none" href="catalog.html">Подопечные</a>
+            <a class="link-light text-decoration-none" href="order.html">Заявка на опеку</a>
+            <a class="link-light text-decoration-none" href="help.html">Помочь центру</a>
+            <a class="link-light text-decoration-none" href="contacts.html">Контакты</a>
+          </nav>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <p class="fw-semibold mb-2">Нашли птицу?</p>
+          <a class="link-light text-decoration-none fs-5 fw-semibold text-nowrap" href="tel:+79000000000">+7 (900) 000-00-00</a>
+          <p class="small opacity-75 mt-2 mb-3">Позвоните, прежде чем везти птицу в центр.</p>
+          <a class="link-light" href="contacts.html#found">Что делать до приезда</a>
         </div>
       </div>
     </div>

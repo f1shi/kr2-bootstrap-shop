@@ -17,71 +17,55 @@
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-  <header class="bg-primary text-white py-4">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-md-8">
-          <p class="h3 mb-1">🪶 Центр «Крылья»</p>
-          <p class="mb-0 opacity-75">
-            Лечим диких птиц и возвращаем их в природу
-          </p>
-        </div>
+  <header class="site-header bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg py-3" aria-label="Основная навигация">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">🪶 Центр «Крылья»</a>
 
-        <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
-          <a class="btn btn-light btn-sm text-primary fw-semibold" href="tel:+79000000000">
-            Нашли птицу? +7 (900) 000-00-00
-          </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Переключить навигацию"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html">Подопечные</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html#about">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="help.html">Помочь</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="contacts.html">Контакты</a>
+            </li>
+            <li class="nav-item ms-lg-2">
+              <button
+                id="themeToggle"
+                class="btn btn-outline-light btn-sm"
+                type="button"
+                aria-label="Переключить тему"
+              >
+                🌙 Тёмная
+              </button>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Крылья</a>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#mainNavbar"
-        aria-controls="mainNavbar"
-        aria-expanded="false"
-        aria-label="Переключить навигацию"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item">
-            <a class="nav-link" href="catalog.html">Подопечные</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.html#about">О нас</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="help.html">Помочь</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="contacts.html">Контакты</a>
-          </li>
-          <li class="nav-item ms-lg-2">
-            <button
-              id="themeToggle"
-              class="btn btn-outline-light btn-sm"
-              type="button"
-              aria-label="Переключить тему"
-            >
-              🌙 Тёмная
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <main class="container my-5">
+  <main class="container page-content">
+    <div>
     <h1 class="h2 mb-4">Контакты</h1>
 
     <section id="found" class="alert alert-warning mb-4" role="note">
@@ -93,6 +77,8 @@
         <li>Позвоните на горячую линию: <a href="tel:+79000000000">+7 (900) 000-00-00</a> — работаем круглосуточно.</li>
       </ol>
     </section>
+
+    </div>
 
     <div class="row g-4">
       <div class="col-12 col-lg-5">
@@ -195,23 +181,52 @@
         </div>
       </div>
     </div>
+
+    <section aria-labelledby="visit-title">
+      <h2 class="h3 mb-4" id="visit-title">Перед поездкой в центр</h2>
+      <div class="row g-4 mb-4">
+        <div class="col-12 col-md-4">
+          <h3 class="h5">Свяжитесь с командой</h3>
+          <p class="text-body-secondary mb-0">Опишите, где нашли птицу, как она себя ведёт и есть ли видимые повреждения. Уточните дальнейшие действия и возможность приёма, прежде чем отправляться в путь.</p>
+        </div>
+        <div class="col-12 col-md-4">
+          <h3 class="h5">Подготовьте перевозку</h3>
+          <p class="text-body-secondary mb-0">Используйте закрытую коробку с отверстиями для воздуха. Ограничьте шум, контакт с людьми и другими животными. Не давайте лекарства и не кормите птицу насильно.</p>
+        </div>
+        <div class="col-12 col-md-4">
+          <h3 class="h5">Сохраните важные сведения</h3>
+          <p class="text-body-secondary mb-0">Запишите место и время находки, обстоятельства травмы и всё, что уже делали для помощи. Эти сведения помогут специалистам оценить ситуацию.</p>
+        </div>
+      </div>
+      <div class="bg-body-tertiary rounded p-4">
+        <h3 class="h5">Хотите познакомиться с центром, а не привезти птицу?</h3>
+        <p class="text-body-secondary mb-0">Экскурсии и волонтёрские визиты согласуются отдельно. Это помогает не мешать лечению и соблюдать спокойствие подопечных. Для записи напишите через форму выше или оставьте <a href="help.html#volunteer">анкету волонтёра</a>.</p>
+      </div>
+    </section>
   </main>
 
-  <footer class="bg-dark text-white py-4 mt-5">
+  <footer class="site-footer bg-dark text-white py-5">
     <div class="container">
-      <div class="row g-3">
-        <div class="col-12 col-md-6">
-          <p class="fw-semibold mb-1">🪶 Центр реабилитации птиц «Крылья»</p>
-          <p class="mb-1 opacity-75">г. Москва, ул. Лесная, д. 12</p>
-          <p class="mb-0 opacity-75">&copy; 2026 Центр реабилитации птиц «Крылья»</p>
+      <div class="row g-4">
+        <div class="col-12 col-lg-5">
+          <p class="fw-semibold mb-2">🪶 Центр реабилитации птиц «Крылья»</p>
+          <p class="mb-2 opacity-75">г. Москва, ул. Лесная, д. 12</p>
+          <p class="small mb-0 opacity-75">&copy; 2026 Центр «Крылья»</p>
         </div>
-
-        <div class="col-12 col-md-6 text-md-end">
-          <a class="text-white text-decoration-none me-3" href="index.html#about">О нас</a>
-          <a class="text-white text-decoration-none me-3" href="catalog.html">Подопечные</a>
-          <a class="text-white text-decoration-none me-3" href="order.html">Заявка</a>
-          <a class="text-white text-decoration-none me-3" href="help.html">Помочь</a>
-          <a class="text-white text-decoration-none" href="contacts.html">Контакты</a>
+        <div class="col-12 col-sm-6 col-lg-3">
+          <nav class="d-flex flex-column align-items-start gap-2" aria-label="Навигация в подвале">
+            <a class="link-light text-decoration-none" href="index.html#about">О нас</a>
+            <a class="link-light text-decoration-none" href="catalog.html">Подопечные</a>
+            <a class="link-light text-decoration-none" href="order.html">Заявка на опеку</a>
+            <a class="link-light text-decoration-none" href="help.html">Помочь центру</a>
+            <a class="link-light text-decoration-none" href="contacts.html">Контакты</a>
+          </nav>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <p class="fw-semibold mb-2">Нашли птицу?</p>
+          <a class="link-light text-decoration-none fs-5 fw-semibold text-nowrap" href="tel:+79000000000">+7 (900) 000-00-00</a>
+          <p class="small opacity-75 mt-2 mb-3">Позвоните, прежде чем везти птицу в центр.</p>
+          <a class="link-light" href="contacts.html#found">Что делать до приезда</a>
         </div>
       </div>
     </div>
