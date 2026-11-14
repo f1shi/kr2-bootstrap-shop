@@ -29,6 +29,13 @@ body {
   font-weight: 700;
 }
 
+/* Эмодзи этапов работы: в 1,5 раза крупнее адаптивного размера .fs-2 */
+.workflow-emoji {
+  display: inline-block;
+  font-size: 1.5em;
+  line-height: 1;
+}
+
 /* ===== Анимация смены темы: птица тянет занавес ===== */
 .theme-curtain {
   position: fixed;

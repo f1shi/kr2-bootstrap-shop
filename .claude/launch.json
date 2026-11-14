@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "krylya-site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-I", "-m", "http.server", "8085", "--bind", "127.0.0.1"],
+      "port": 8085
+    }
+  ]
+}

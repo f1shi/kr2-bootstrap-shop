@@ -38,7 +38,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Крылья</a>
+      <a class="navbar-brand" aria-current="page" href="index.html">Крылья</a>
 
       <button
         class="navbar-toggler"
@@ -55,38 +55,16 @@
       <div class="collapse navbar-collapse" id="mainNavbar">
         <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Главная</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="catalog.html">Подопечные</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="product.html">Птица</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="order.html">Заявка</a>
+            <a class="nav-link" href="index.html#about">О нас</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="help.html">Помочь</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contacts.html">Контакты</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Дополнительно
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-              <li><a class="dropdown-item" href="catalog.html">Все подопечные</a></li>
-              <li><a class="dropdown-item" href="contacts.html#found">Нашли птицу?</a></li>
-              <li><a class="dropdown-item" href="help.html#volunteer">Стать волонтёром</a></li>
-            </ul>
           </li>
           <li class="nav-item ms-lg-2">
             <button
@@ -189,13 +167,56 @@
       </div>
     </section>
 
+    <section class="container my-5" id="about" aria-labelledby="about-title">
+      <div class="row g-4 g-lg-5 align-items-center">
+        <div class="col-12 col-lg-7">
+          <h2 class="mb-3" id="about-title">О нас</h2>
+          <p class="lead">
+            «Крылья» — центр реабилитации диких птиц. Мы помогаем тем,
+            кто не справится без человека, и делаем всё, чтобы вернуть их в природу.
+          </p>
+          <p class="text-body-secondary mb-4">
+            За каждой историей спасения стоит общая работа: от первого звонка
+            о найденной птице до лечения, восстановления и выпуска.
+            А если жизнь на воле больше невозможна, забота не заканчивается —
+            мы ищем птице безопасный дом или постоянного опекуна.
+          </p>
+          <h3 class="h5 mb-3">Кто помогает птицам</h3>
+          <dl class="mb-0">
+            <dt>Ветеринары-орнитологи</dt>
+            <dd class="text-body-secondary mb-3">Проводят диагностику и лечение, следят за восстановлением и готовностью птиц к выпуску.</dd>
+            <dt>Волонтёры</dt>
+            <dd class="text-body-secondary mb-3">Помогают с перевозкой, кормлением и ежедневным уходом за подопечными.</dd>
+            <dt>Опекуны</dt>
+            <dd class="text-body-secondary mb-0">Поддерживают лечение и содержание птиц, которым нужна длительная помощь.</dd>
+          </dl>
+        </div>
+        <div class="col-12 col-lg-5">
+          <div class="bg-success-subtle border border-success-subtle rounded p-4 p-lg-5">
+            <h3 class="h5 text-success-emphasis mb-3">Наш главный принцип</h3>
+            <p class="h3 mb-3">Помочь окрепнуть.<br>Дать вернуться в небо.</p>
+            <p class="text-body-secondary mb-4">
+              Дикая птица должна жить на воле, если позволяет здоровье.
+              Поэтому наша цель — не просто вылечить, а подготовить
+              к самостоятельной жизни в естественной среде.
+            </p>
+            <p class="fw-semibold mb-3">Стать частью этой работы может каждый.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-primary" href="help.html#volunteer">Стать волонтёром</a>
+              <a class="btn btn-outline-primary" href="contacts.html">Связаться с нами</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="container my-5" id="advantages">
       <h2 class="text-center mb-4">Как мы работаем</h2>
 
       <div class="row g-4">
         <div class="col-12 col-md-4">
           <div class="p-4 border rounded h-100 bg-body">
-            <p class="fs-2 mb-2" aria-hidden="true">🩺</p>
+            <p class="fs-2 mb-2" aria-hidden="true"><span class="workflow-emoji">🩺</span></p>
             <h3 class="h5">Лечение</h3>
             <p class="mb-0 text-body-secondary">
               Ветеринары-орнитологи оперируют, ставят капельницы и выхаживают птиц.
@@ -205,7 +226,7 @@
 
         <div class="col-12 col-md-4">
           <div class="p-4 border rounded h-100 bg-body">
-            <p class="fs-2 mb-2" aria-hidden="true">🏋️</p>
+            <p class="fs-2 mb-2" aria-hidden="true"><span class="workflow-emoji">🏋️</span></p>
             <h3 class="h5">Реабилитация</h3>
             <p class="mb-0 text-body-secondary">
               В больших вольерах птицы заново учатся летать, плавать и добывать корм.
@@ -215,7 +236,7 @@
 
         <div class="col-12 col-md-4">
           <div class="p-4 border rounded h-100 bg-body">
-            <p class="fs-2 mb-2" aria-hidden="true">🌲</p>
+            <p class="fs-2 mb-2" aria-hidden="true"><span class="workflow-emoji">🌲</span></p>
             <h3 class="h5">Выпуск</h3>
             <p class="mb-0 text-body-secondary">
               Окрепших птиц выпускаем в подходящие места. Тем, кто не может летать, ищем дом.
@@ -301,10 +322,11 @@
         <div class="col-12 col-md-6">
           <p class="fw-semibold mb-1">🪶 Центр реабилитации птиц «Крылья»</p>
           <p class="mb-1 opacity-75">г. Москва, ул. Лесная, д. 12</p>
-          <p class="mb-0 opacity-75">&copy; 2026 Учебный проект КР №2</p>
+          <p class="mb-0 opacity-75">&copy; 2026 Центр реабилитации птиц «Крылья»</p>
         </div>
 
         <div class="col-12 col-md-6 text-md-end">
+          <a class="text-white text-decoration-none me-3" href="index.html#about">О нас</a>
           <a class="text-white text-decoration-none me-3" href="catalog.html">Подопечные</a>
           <a class="text-white text-decoration-none me-3" href="order.html">Заявка</a>
           <a class="text-white text-decoration-none me-3" href="help.html">Помочь</a>
