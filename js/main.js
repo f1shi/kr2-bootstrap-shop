@@ -179,7 +179,13 @@ backToTop.type = 'button';
 backToTop.className = 'back-to-top btn btn-primary';
 backToTop.setAttribute('aria-label', 'Вернуться наверх');
 backToTop.title = 'Наверх';
-backToTop.textContent = '↑';
+const backToTopBird = document.createElement('img');
+backToTopBird.src = 'images/bird-up.svg';
+backToTopBird.alt = '';
+backToTopBird.width = 34;
+backToTopBird.height = 34;
+backToTopBird.setAttribute('aria-hidden', 'true');
+backToTop.append(backToTopBird);
 backToTop.hidden = true;
 document.body.append(backToTop);
 
@@ -201,6 +207,51 @@ backToTop.addEventListener('click', () => {
   });
 });
 
+
+// 6. Цифры появляются от нуля один раз при показе блока статистики.
+const counters = document.querySelectorAll('[data-count]');
+if (counters.length && 'IntersectionObserver' in window) {
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const formatter = new Intl.NumberFormat('ru-RU');
+  const runningFrames = new Map();
+  const showFinal = (counter) => {
+    cancelAnimationFrame(runningFrames.get(counter));
+    runningFrames.delete(counter);
+    counter.querySelector('span').textContent = formatter.format(Number(counter.dataset.count));
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (!isIntersecting) return;
+      observer.unobserve(target);
+      if (motionPreference.matches) {
+        showFinal(target);
+        return;
+      }
+      let started;
+      const total = Number(target.dataset.count);
+      function tick(now) {
+        started ??= now;
+        const progress = Math.min((now - started) / 1500, 1);
+        const eased = 1 - (1 - progress) ** 3;
+        target.querySelector('span').textContent = formatter.format(Math.round(total * eased));
+        if (progress < 1) runningFrames.set(target, requestAnimationFrame(tick));
+        else runningFrames.delete(target);
+      }
+      runningFrames.set(target, requestAnimationFrame(tick));
+    });
+  }, { threshold: 0.5 });
+  if (!motionPreference.matches) {
+    counters.forEach((counter) => {
+      counter.querySelector('span').textContent = '0';
+      observer.observe(counter);
+    });
+  }
+  motionPreference.addEventListener('change', ({ matches }) => {
+    if (!matches) return;
+    observer.disconnect();
+    counters.forEach(showFinal);
+  });
+}
 
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {

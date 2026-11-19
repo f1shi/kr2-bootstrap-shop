@@ -57,6 +57,28 @@ body.home-page {
   box-shadow: 0 3px 14px rgb(0 0 0 / 20%);
 }
 
+.back-to-top img {
+  display: block;
+  margin: auto;
+}
+
+.site-footer a {
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+.footer-contacts {
+  line-height: 1.6;
+}
+
+.fund-illustration {
+  display: block;
+  width: 100%;
+  aspect-ratio: 24 / 13;
+  object-fit: cover;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
 .site-header .navbar-brand {
   font-weight: 600;
 }
@@ -94,6 +116,8 @@ body.home-page {
 
 /* Цифры в блоке «Центр в цифрах» */
 .stat-number {
+  font-variant-numeric: tabular-nums;
+  min-width: 4ch;
   font-size: 2.75rem;
   font-weight: 700;
 }
