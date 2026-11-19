@@ -253,6 +253,66 @@ if (counters.length && 'IntersectionObserver' in window) {
   });
 }
 
+// 7. Закреплённый чат-помощник: быстрые ответы и переход к форме связи.
+// Сообщения не отправляются на сервер, поэтому не обещаем ответ оператора.
+const chatPanel = document.createElement('section');
+chatPanel.id = 'supportChat';
+chatPanel.className = 'support-chat card shadow-lg';
+chatPanel.hidden = true;
+chatPanel.setAttribute('role', 'region');
+chatPanel.setAttribute('aria-labelledby', 'supportChatTitle');
+chatPanel.innerHTML = `
+  <div class="card-header d-flex justify-content-between align-items-center gap-3">
+    <div>
+      <h2 class="h6 mb-1" id="supportChatTitle">Помощник «Крылья»</h2>
+      <p class="small text-body-secondary mb-0">Подсказки и связь с центром</p>
+    </div>
+    <button class="btn btn-outline-secondary btn-sm" type="button" data-chat-close aria-label="Закрыть чат">✕</button>
+  </div>
+  <div class="card-body support-chat__body">
+    <p class="small mb-3">Здравствуйте! Выберите вопрос — помогу найти нужную информацию.</p>
+    <div class="d-flex flex-column align-items-start gap-2 mb-3" aria-label="Частые вопросы">
+      <button class="btn btn-outline-primary btn-sm text-start" type="button" data-chat-topic="found">Нашли раненую птицу?</button>
+      <button class="btn btn-outline-primary btn-sm text-start" type="button" data-chat-topic="help">Как помочь центру?</button>
+      <button class="btn btn-outline-primary btn-sm text-start" type="button" data-chat-topic="visit">Как приехать в центр?</button>
+    </div>
+    <div class="small border-top pt-3" role="status" aria-live="polite" aria-atomic="true" data-chat-answer>
+      Для личного вопроса воспользуйтесь формой на странице контактов.
+    </div>
+    <a class="btn btn-primary btn-sm mt-3" href="contacts.html#feedback-name">Написать в центр</a>
+  </div>`;
+const chatToggle = document.createElement('button');
+chatToggle.type = 'button';
+chatToggle.className = 'support-chat-toggle btn btn-primary';
+chatToggle.textContent = 'Чат с центром';
+chatToggle.setAttribute('aria-controls', chatPanel.id);
+chatToggle.setAttribute('aria-expanded', 'false');
+document.body.append(chatPanel, chatToggle);
+
+function setChatOpen(open) {
+  chatPanel.hidden = !open;
+  chatToggle.setAttribute('aria-expanded', String(open));
+  if (open) chatPanel.querySelector('[data-chat-close]').focus();
+  else chatToggle.focus({ preventScroll: true });
+}
+chatToggle.addEventListener('click', () => setChatOpen(chatPanel.hidden));
+chatPanel.querySelector('[data-chat-close]').addEventListener('click', () => setChatOpen(false));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && !chatPanel.hidden) {
+    setChatOpen(false);
+  }
+});
+const chatAnswers = {
+  found: 'Поместите птицу в коробку с отверстиями, держите в тихом месте. Не кормите, не поите насильно и не давайте лекарства. Перед поездкой свяжитесь с центром. Подробная инструкция — на странице «Контакты».',
+  help: 'Можно поддержать сборы на корм, лечение и вольер, стать опекуном или волонтёром. Все способы помощи и анкета волонтёра — на странице «Помочь».',
+  visit: 'Адрес: г. Москва, ул. Лесная, д. 12. Офис: с 9:00 до 18:00. Экскурсии — сб–вс в 12:00, по записи. Согласуйте визит заранее через страницу контактов.',
+};
+chatPanel.querySelectorAll('[data-chat-topic]').forEach((button) => {
+  button.addEventListener('click', () => {
+    chatPanel.querySelector('[data-chat-answer]').textContent = chatAnswers[button.dataset.chatTopic];
+  });
+});
+
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
     if (themeAnimating) return;
