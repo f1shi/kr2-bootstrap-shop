@@ -164,6 +164,44 @@ function runBirdCurtain(toDark, onCovered) {
 
 applyTheme(document.documentElement.getAttribute('data-bs-theme') || 'light');
 
+// 5. Закреплённая шапка и возврат к началу на всех страницах.
+const siteHeader = document.querySelector('.site-header');
+if (siteHeader) {
+  const updateHeaderHeight = () => {
+    document.documentElement.style.setProperty('--site-header-height', `${siteHeader.offsetHeight}px`);
+  };
+  new ResizeObserver(updateHeaderHeight).observe(siteHeader);
+  updateHeaderHeight();
+}
+
+const backToTop = document.createElement('button');
+backToTop.type = 'button';
+backToTop.className = 'back-to-top btn btn-primary';
+backToTop.setAttribute('aria-label', 'Вернуться наверх');
+backToTop.title = 'Наверх';
+backToTop.textContent = '↑';
+backToTop.hidden = true;
+document.body.append(backToTop);
+
+function updateBackToTop() {
+  backToTop.hidden = window.scrollY < window.innerHeight;
+}
+
+window.addEventListener('scroll', updateBackToTop, { passive: true });
+window.addEventListener('resize', updateBackToTop);
+window.addEventListener('pageshow', updateBackToTop);
+updateBackToTop();
+
+backToTop.addEventListener('click', () => {
+  // Переносим фокус с исчезающей кнопки на начало навигации.
+  siteHeader?.querySelector('.navbar-brand')?.focus({ preventScroll: true });
+  window.scrollTo({
+    top: 0,
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+  });
+});
+
+
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
     if (themeAnimating) return;

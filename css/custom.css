@@ -31,6 +31,32 @@ body.home-page {
   margin-bottom: 0 !important;
 }
 
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 12%);
+}
+
+/* Якоря не прячутся за закреплённой шапкой. */
+[id] {
+  scroll-margin-top: calc(var(--site-header-height, 72px) + 16px);
+}
+
+.back-to-top {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 1020;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.75rem;
+  line-height: 1;
+  box-shadow: 0 3px 14px rgb(0 0 0 / 20%);
+}
+
 .site-header .navbar-brand {
   font-weight: 600;
 }
