@@ -64,7 +64,7 @@ body.home-page {
 
 .support-chat-toggle {
   position: fixed;
-  right: max(1rem, env(safe-area-inset-right));
+  left: max(1rem, env(safe-area-inset-left));
   bottom: max(1rem, env(safe-area-inset-bottom));
   z-index: 1030;
   min-height: 48px;
@@ -75,7 +75,7 @@ body.home-page {
 
 .support-chat {
   position: fixed;
-  right: max(1rem, env(safe-area-inset-right));
+  left: max(1rem, env(safe-area-inset-left));
   bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 60px);
   z-index: 1030;
   width: min(360px, calc(100vw - 2rem));
@@ -90,12 +90,6 @@ body.home-page {
 
 .support-chat__body {
   flex: 0 0 auto;
-}
-
-/* Чат и птица-наверх не перекрывают друг друга. */
-.back-to-top {
-  right: auto;
-  left: max(1rem, env(safe-area-inset-left));
 }
 
 .site-footer a {
